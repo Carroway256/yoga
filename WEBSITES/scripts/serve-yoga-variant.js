@@ -24,7 +24,10 @@ function safeJoin(baseDir, relativePath) {
   const baseResolved = path.resolve(baseDir);
   const targetResolved = path.resolve(baseDir, relativePath);
   const sep = path.sep;
-  if (targetResolved !== baseResolved && !targetResolved.startsWith(baseResolved + sep)) {
+  if (
+    targetResolved !== baseResolved &&
+    !targetResolved.startsWith(baseResolved + sep)
+  ) {
     throw new Error("Path traversal attempt blocked");
   }
   return targetResolved;
@@ -41,6 +44,9 @@ const MIME = {
   ".webp": "image/webp",
   ".gif": "image/gif",
   ".svg": "image/svg+xml; charset=utf-8",
+  ".mov": "video/quicktime",
+  ".mp4": "video/mp4",
+  ".webm": "video/webm",
 };
 
 function contentTypeFor(filePath) {
@@ -63,7 +69,9 @@ function readFile(filePath) {
 
 const args = parseArgs(process.argv.slice(2));
 if (!args.variant) {
-  console.log("Usage: node scripts/serve-yoga-variant.js --variant <variantName> --port <port> [--host <host>]");
+  console.log(
+    "Usage: node scripts/serve-yoga-variant.js --variant <variantName> --port <port> [--host <host>]",
+  );
   process.exit(1);
 }
 
@@ -73,7 +81,9 @@ const assetsDir = path.join(rootDir, "assets");
 const indexPath = path.join(variantDir, "index.html");
 
 if (!fileExists(indexPath)) {
-  console.error(`Variant not found (missing index.html): ${path.relative(rootDir, indexPath)}`);
+  console.error(
+    `Variant not found (missing index.html): ${path.relative(rootDir, indexPath)}`,
+  );
   process.exit(1);
 }
 
@@ -105,7 +115,19 @@ const server = http.createServer((req, res) => {
       const rel = pathname.slice(1);
       if (!rel.includes("/") && !rel.includes("..")) {
         const ext = path.extname(rel).toLowerCase();
-        if ([".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg"].includes(ext)) {
+        if (
+          [
+            ".jpg",
+            ".jpeg",
+            ".png",
+            ".webp",
+            ".gif",
+            ".svg",
+            ".mov",
+            ".mp4",
+            ".webm",
+          ].includes(ext)
+        ) {
           const assetCandidate = safeJoin(assetsDir, rel);
           if (fileExists(assetCandidate)) resolvedPath = assetCandidate;
         }
@@ -152,7 +174,9 @@ const server = http.createServer((req, res) => {
 
   // Lightweight logging.
   // eslint-disable-next-line no-console
-  console.log(`${method} ${pathname} -> ${path.relative(rootDir, resolvedPath)}`);
+  console.log(
+    `${method} ${pathname} -> ${path.relative(rootDir, resolvedPath)}`,
+  );
 });
 
 server.listen(args.port, args.host, () => {
@@ -160,4 +184,3 @@ server.listen(args.port, args.host, () => {
   console.log(`Variant: ${args.variant}`);
   console.log(`Assets: ${path.relative(rootDir, assetsDir)}`);
 });
-
