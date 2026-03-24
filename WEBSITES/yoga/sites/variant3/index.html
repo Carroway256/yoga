@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Sanctuary | Twoja Przestrzeń</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        :root {
+            --bone: #F5F2ED;
+            --linen: #E8E2D9;
+            --clay: #4A4540;
+            --sage: #A3AD9E;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bone); color: var(--clay); scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
+        
+        .soft-float { box-shadow: 0 20px 40px rgba(0,0,0,0.03); }
+        .bg-glass { background: rgba(245, 242, 237, 0.7); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="antialiased" x-data="{ 
+    slide: 0, 
+    images: [
+        '618640629_1442724833904555_3826791502309384574_n.jpg',
+        '614203473_1218218953844718_829325212283755468_n.jpg',
+        '614247353_1363445535794148_3061338048914939097_n.jpg',
+        '617342026_864080449792809_6090802381099828354_n.jpg',
+        '616547076_2256314254852880_1228399724851494341_n.jpg',
+        '598713731_1343900104177564_4820631278037007928_n.jpg',
+        '616134480_1420560796366575_5108939830918804903_n.jpg',
+        '614676775_3128012357382930_3698500492567957453_n.jpg',
+        '613566824_734872403011104_7553094548256116541_n.jpg'
+    ] 
+}">
+
+    <nav class="fixed w-full z-50 px-8 py-8 flex justify-between items-center bg-glass">
+        <span class="text-xl tracking-[0.3em] font-light uppercase">Sanctuary.</span>
+        <div class="hidden md:flex space-x-12 text-[10px] uppercase tracking-[0.2em]">
+            <a href="#about" class="hover:opacity-50 transition">O Praktyce</a>
+            <a href="#gallery" class="hover:opacity-50 transition">Galeria</a>
+            <a href="#pricing" class="hover:opacity-50 transition">Cennik</a>
+            <a href="#contact" class="hover:opacity-50 transition font-bold border-b border-clay">Kontakt</a>
+        </div>
+    </nav>
+
+    <section class="min-h-screen flex items-center justify-start md:justify-center px-8">
+        <div class="max-w-5xl w-full grid md:grid-cols-2 gap-12 md:gap-20 items-start md:items-center mt-4 md:mt-0">
+            <div class="order-2 md:order-1">
+                <h1 class="text-6xl md:text-8xl leading-none mb-8 opacity-90 text-center">
+                    Znajdź <br><span class="italic md:pl-12 text-sage">Ciszę.</span>
+                </h1>
+                <p class="text-sm tracking-widest leading-loose opacity-60 max-w-xs">
+                    Praktyka jogi, która nie jest treningiem, lecz powrotem do siebie.
+                </p>
+            </div>
+            <div class="order-1 md:order-2">
+                <div class="h-[42vh] min-h-[300px] overflow-hidden soft-float rounded-t-full bg-linen md:h-auto md:aspect-[3/4]">
+                    <img src="https://images.unsplash.com/photo-1510894347713-fc3ed6fdf539?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-32 bg-[#EFECE7]">
+        <div class="max-w-6xl mx-auto px-8">
+            <div class="flex flex-col md:flex-row md:justify-between items-start md:items-end mb-12">
+                <h2 class="text-4xl md:text-5xl italic">Wgląd w ruch</h2>
+                <div class="flex space-x-4 mt-8 md:mt-0">
+                    <button @click="slide = slide === 0 ? images.length - 1 : slide - 1" class="w-12 h-12 border border-clay/20 flex items-center justify-center rounded-full hover:bg-clay hover:text-white transition">←</button>
+                    <button @click="slide = slide === images.length - 1 ? 0 : slide + 1" class="w-12 h-12 border border-clay/20 flex items-center justify-center rounded-full hover:bg-clay hover:text-white transition">→</button>
+                </div>
+            </div>
+
+            <div class="relative overflow-hidden aspect-[16/10] md:aspect-[21/12] soft-float rounded-2xl">
+                <template x-for="(img, index) in images" :key="index">
+                    <img x-show="slide === index" 
+                         x-transition:enter="transition duration-700 ease-out" 
+                         x-transition:enter-start="opacity-0 scale-105" 
+                         x-transition:enter-end="opacity-100 scale-100" 
+                         :src="img" 
+                         class="absolute inset-0 w-full h-full object-cover">
+                </template>
+            </div>
+            
+            <div class="mt-6 flex justify-between text-[10px] uppercase tracking-widest opacity-40">
+                <span>Sesja w Studio / Plener</span>
+                <span>Widok <span x-text="slide + 1"></span> z <span x-text="images.length"></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-32 px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="max-w-2xl mb-16">
+                <h2 class="text-5xl mb-6">Cennik.</h2>
+                <p class="text-sm opacity-60 leading-relaxed">Każda sesja jest zaproszeniem do głębszego poznania swoich możliwości.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-16">
+                <div class="bg-linen p-12 shadow-[0_0_0_1px_rgba(74,69,64,0.12),0_25px_60px_rgba(0,0,0,0.10)] flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl mb-4">Sesja 1:1</h3>
+                        <p class="text-sm opacity-60 mb-8">60 minut / Indywidualne podejście</p>
+                    </div>
+                    <div class="pt-6">
+                        <div class="h-px bg-clay/10 rounded-full w-24 mb-6"></div>
+                        <div class="flex justify-between items-end">
+                            <span class="text-sm uppercase tracking-widest">Sesja 1:1</span>
+                            <span class="text-2xl">180 zł</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-linen p-12 shadow-[0_0_0_1px_rgba(74,69,64,0.12),0_25px_60px_rgba(0,0,0,0.10)] flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl mb-4">Zajęcia Grupowe</h3>
+                        <p class="text-sm opacity-60 mb-8">Budowanie wspólnej energii w kameralnej atmosferze.</p>
+                    </div>
+                    <div class="pt-6">
+                        <div class="h-px bg-clay/10 rounded-full w-24 mb-6"></div>
+                        <div class="flex justify-between items-end">
+                            <span class="text-sm uppercase tracking-widest">Karnet 10 wejść</span>
+                            <span class="text-2xl">450 zł</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-linen p-12 shadow-[0_0_0_1px_rgba(74,69,64,0.12),0_25px_60px_rgba(0,0,0,0.10)] flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl mb-4">Pakiet 5 sesji</h3>
+                        <p class="text-sm opacity-60 mb-8">Ciągłość pracy nad oddechem, mobilnością i uważnością.</p>
+                    </div>
+                    <div class="pt-6">
+                        <div class="h-px bg-clay/10 rounded-full w-24 mb-6"></div>
+                        <div class="flex justify-between items-end">
+                            <span class="text-sm uppercase tracking-widest">5 x 60 minut</span>
+                            <span class="text-2xl">700 zł</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-32 bg-white px-8">
+        <div class="max-w-2xl mx-auto text-left">
+            <h2 class="text-4xl mb-16 italic font-light">Napisz do mnie.</h2>
+            <form class="space-y-12">
+                <input type="text" placeholder="Imię" class="w-full bg-transparent border-b border-clay/20 py-4 focus:outline-none focus:border-sage transition text-left text-xl font-light italic">
+                <input type="email" placeholder="Email" class="w-full bg-transparent border-b border-clay/20 py-4 focus:outline-none focus:border-sage transition text-left text-xl font-light">
+                <textarea rows="5" placeholder="Wiadomość" class="w-full bg-transparent border-b border-clay/20 py-4 focus:outline-none focus:border-sage transition text-left text-xl font-light placeholder:opacity-60 resize-none"></textarea>
+                <button class="text-[10px] uppercase tracking-[0.4em] font-bold py-6 hover:opacity-50 transition">Wyślij Zapytanie</button>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>

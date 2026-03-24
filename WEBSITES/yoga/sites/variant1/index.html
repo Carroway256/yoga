@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga z [Twoje Imię] | Spokój umysłu. Sprawność ciała.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        :root {
+            --forest: #2D4635;
+            --sage: #8BA889;
+            --sand: #D9C5B2;
+            --cream: #FDFBF7;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--cream); color: var(--forest); scroll-behavior: smooth; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        .organic-minimal { box-shadow: 0 10px 15px -3px rgba(45, 70, 53, 0.1); border-radius: 1.5rem; }
+        .hero-sun-bg {
+            background-image: linear-gradient(rgba(253, 251, 247, 0.85), rgba(253, 251, 247, 0.70)), url('618640629_1442724833904555_3826791502309384574_n.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="antialiased" x-data="{ mobileMenuOpen: false }">
+
+    <nav class="fixed w-full z-50 bg-[#FDFBF7]/90 backdrop-blur-md border-b border-[#2D4635]/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tight italic text-[#2D4635]">flow.</a>
+            <div class="hidden md:flex space-x-8 text-xs uppercase tracking-widest font-semibold items-center">
+                <a href="#philosophy" class="hover:text-[#8BA889] transition">Filozofia</a>
+                <a href="#classes" class="hover:text-[#8BA889] transition">Rodzaje zajęć</a>
+                <a href="#pricing" class="hover:text-[#8BA889] transition">Cennik</a>
+                <a href="#contact" class="bg-[#2D4635] text-white px-6 py-2 rounded-full text-xs font-semibold hover:bg-[#8BA889] transition">Zapisz się</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero-sun-bg min-h-screen flex items-center pt-24 mb-24">
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="absolute -top-12 -left-12 w-48 h-48 bg-[#D9C5B2] rounded-full z-0 opacity-40"></div>
+                    <div class="relative z-10">
+                        <span class="text-[#8BA889] font-semibold tracking-widest uppercase text-sm mb-2 block text-balance">Yoga dla profesjonalistów</span>
+                        <h1 class="text-5xl md:text-7xl mb-6 leading-tight">Spokój umysłu.<br><span class="italic text-[#8BA889]">Sprawność ciała.</span></h1>
+                        <p class="text-lg mb-8 text-slate-600 max-w-md">Indywidualne podejście, które pomaga odzyskać mobilność i klarowność umysłu.</p>
+                        <a href="#contact" class="inline-block bg-[#2D4635] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#8BA889] transition duration-300">Umów zajęcia próbne</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="classes" class="py-24 px-6 bg-[#FDFBF7]">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl">Znajdź swój rytm</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 organic-minimal border border-slate-100 group">
+                        <div class="h-56 rounded-xl bg-slate-100 mb-6 overflow-hidden">
+                            <img src="614203473_1218218953844718_829325212283755468_n.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        </div>
+                        <h3 class="text-2xl mb-3">Hatha Klasyczna</h3>
+                        <p class="text-slate-500 text-sm">Skupienie na precyzji, stabilności i oddechu.</p>
+                    </div>
+                    <div class="bg-white p-8 organic-minimal border border-slate-100 group">
+                        <div class="h-56 rounded-xl bg-slate-100 mb-6 overflow-hidden">
+                            <img src="616547076_2256314254852880_1228399724851494341_n.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        </div>
+                        <h3 class="text-2xl mb-3">Vinyasa Flow</h3>
+                        <p class="text-slate-500 text-sm">Płynne przejścia i budowanie wytrzymałości.</p>
+                    </div>
+                    <div class="bg-white p-8 organic-minimal border border-slate-100 group">
+                        <div class="h-56 rounded-xl bg-slate-100 mb-6 overflow-hidden">
+                            <img src="617342026_864080449792809_6090802381099828354_n.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        </div>
+                        <h3 class="text-2xl mb-3">Yin Joga & Relaks</h3>
+                        <p class="text-slate-500 text-sm">Głęboka praca z powięzią i tkanką łączną.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="py-24 bg-[#2D4635] text-white px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-8 items-stretch">
+                    
+                    <div class="bg-white text-[#2D4635] p-12 organic-minimal md:col-span-2 flex flex-col justify-center items-center text-center border-4 border-[#8BA889]">
+                        <span class="text-[#8BA889] font-bold uppercase tracking-[0.2em] text-xs mb-4">Oferta Premium</span>
+                        <h4 class="text-4xl md:text-5xl mb-4 font-bold">Zajęcia Indywidualne 1:1</h4>
+                        <div class="text-6xl font-bold mb-6">180 zł <span class="text-xl font-normal opacity-50">/ sesja</span></div>
+                        <p class="text-slate-600 mb-10 max-w-md text-lg italic">Spersonalizowana praktyka skupiona wyłącznie na Twoich potrzebach, celach i tempie progresu.</p>
+                        <a href="#contact" class="bg-[#2D4635] text-white px-12 py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-[#8BA889] transition">Zarezerwuj sesję</a>
+                    </div>
+
+                    <div class="border border-white/20 p-10 rounded-2xl flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-xl mb-2 italic">Na start</h4>
+                            <div class="text-4xl font-bold mb-6">100 zł <span class="text-lg font-normal opacity-60">/ 3 wejścia</span></div>
+                            <p class="opacity-70 mb-8">Idealne na początek, by poczuć energię wspólnej praktyki.</p>
+                        </div>
+                        <button class="w-full py-3 rounded-lg border border-white hover:bg-white hover:text-[#2D4635] transition font-semibold">Zacznij teraz</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-24 px-6 bg-white">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl mb-4">Rozpocznij praktykę</h2>
+                </div>
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <input type="text" placeholder="Imię" class="w-full p-4 rounded-xl bg-[#FDFBF7] border border-slate-100 focus:outline-none focus:border-[#8BA889]">
+                        <input type="email" placeholder="Email" class="w-full p-4 rounded-xl bg-[#FDFBF7] border border-slate-100 focus:outline-none focus:border-[#8BA889]">
+                    </div>
+                    <textarea rows="4" placeholder="Twoja wiadomość..." class="w-full p-4 rounded-xl bg-[#FDFBF7] border border-slate-100 focus:outline-none focus:border-[#8BA889]"></textarea>
+                    <button type="submit" class="w-full bg-[#2D4635] text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-[#8BA889] transition">Wyślij wiadomość</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+
+</body>
+</html>
