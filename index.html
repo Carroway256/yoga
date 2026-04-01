@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body class="antialiased">
 
@@ -41,7 +42,7 @@
             <h1 class="text-7xl md:text-[11rem] text-white font-black  leading-none tracking-tighter">
                 TWOJA<br><div class="text-[#1A2E22]  font-normal">JOGA.</div>
             </h1>
-            <p class="text-white/50 mt-10 max-w-sm text-lg font-light leading-relaxed mt-40">
+            <p class="text-white/50 mt-10 max-w-sm text-lg font-light leading-relaxed md:mt-40">
                 Indywidualne sesje i eventy jogowe dopasowane do Twoich potrzeb. Zajecia grupowe we wrocławiu i okolicach.Odkrywaj ruch i potencjal swojego ciala ze mna.
             </p>
             <div class="mt-14">
@@ -163,7 +164,7 @@
         </div>
     </section>
 
-    <section id="contact" class="py-40 bg-white px-8">
+    <section id="contact" class="pt-40 pb-10 md:pb-20 bg-white px-8">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-7xl md:text-9xl font-black leading-none tracking-tighter mb-16 uppercase">Dowiedz się <br><div class="text-[#C5A489] italic font-normal lowercase md:text-left md:pl-12">więcej !</div></h2>
 
@@ -179,22 +180,22 @@
                 </button>
             </form>
 
-            <!-- Social: zamień href na swoje profile; w .social-icon-slot wklej SVG albo <img src="..." alt=""> -->
-            <nav class="mt-20 border-t border-[#1A2E22]/10 pt-14" aria-label="Media społecznościowe">
-                <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-[#C5A489] mb-8">Znajdziesz mnie</p>
-                <ul class="flex flex-wrap items-center justify-center gap-10 md:gap-14">
+            <!-- Social: zamień href na swoje profile -->
+            <nav class="mt-20 border-t border-[#1A2E22]/10 px-4 py-12 pt-16 sm:px-6 md:mt-24 md:px-8 md:py-16 md:pt-20" aria-label="Media społecznościowe">
+                <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-[#C5A489] mb-10 md:mb-12">Znajdziesz mnie</p>
+                <ul class="flex flex-wrap items-center justify-center gap-x-12 gap-y-12 md:gap-x-16 md:gap-y-14 lg:gap-x-20">
                     <li>
                         <a
                             href="https://www.tiktok.com/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="group inline-flex flex-col items-center gap-3 text-[#1A2E22] transition hover:text-[#C5A489] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A489] focus-visible:ring-offset-2"
+                            class="group inline-flex flex-col items-center gap-4 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A489] focus-visible:ring-offset-2"
                             aria-label="TikTok (otwiera się w nowej karcie)"
                         >
-                            <span class="social-icon-slot rounded-full border border-[#1A2E22]/15 bg-[#1A2E22]/5 transition group-hover:border-[#C5A489]/40" aria-hidden="true">
-                                <!-- ikona TikTok -->
+                            <span class="social-icon-slot rounded-full border border-[#1A2E22]/15 bg-white transition group-hover:border-[#C5A489]/40" aria-hidden="true">
+                                <i class="fa-brands fa-tiktok text-xl text-black group-hover:opacity-90" aria-hidden="true"></i>
                             </span>
-                            <span class="text-[9px] font-bold uppercase tracking-[0.35em]">TikTok</span>
+                            <span class="text-[9px] font-bold uppercase tracking-[0.35em] text-[#1A2E22] transition group-hover:text-[#C5A489]">TikTok</span>
                         </a>
                     </li>
                     <li>
@@ -202,13 +203,13 @@
                             href="https://www.instagram.com/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="group inline-flex flex-col items-center gap-3 text-[#1A2E22] transition hover:text-[#C5A489] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A489] focus-visible:ring-offset-2"
+                            class="group inline-flex flex-col items-center gap-4 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A489] focus-visible:ring-offset-2"
                             aria-label="Instagram (otwiera się w nowej karcie)"
                         >
-                            <span class="social-icon-slot rounded-full border border-[#1A2E22]/15 bg-[#1A2E22]/5 transition group-hover:border-[#C5A489]/40" aria-hidden="true">
-                                <!-- ikona Instagram -->
+                            <span class="social-icon-slot rounded-full border border-[#1A2E22]/15 bg-white transition group-hover:border-[#C5A489]/40" aria-hidden="true">
+                                <i class="fa-brands fa-instagram text-xl text-[#E4405F] group-hover:opacity-90" aria-hidden="true"></i>
                             </span>
-                            <span class="text-[9px] font-bold uppercase tracking-[0.35em]">Instagram</span>
+                            <span class="text-[9px] font-bold uppercase tracking-[0.35em] text-[#1A2E22] transition group-hover:text-[#C5A489]">Instagram</span>
                         </a>
                     </li>
                     <li>
@@ -216,18 +217,18 @@
                             href="https://www.facebook.com/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="group inline-flex flex-col items-center gap-3 text-[#1A2E22] transition hover:text-[#C5A489] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A489] focus-visible:ring-offset-2"
+                            class="group inline-flex flex-col items-center gap-4 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A489] focus-visible:ring-offset-2"
                             aria-label="Facebook (otwiera się w nowej karcie)"
                         >
-                            <span class="social-icon-slot rounded-full border border-[#1A2E22]/15 bg-[#1A2E22]/5 transition group-hover:border-[#C5A489]/40" aria-hidden="true">
-                                <!-- ikona Facebook -->
+                            <span class="social-icon-slot rounded-full border border-[#1A2E22]/15 bg-white transition group-hover:border-[#C5A489]/40" aria-hidden="true">
+                                <i class="fa-brands fa-facebook text-xl text-[#1877F2] group-hover:opacity-90" aria-hidden="true"></i>
                             </span>
-                            <span class="text-[9px] font-bold uppercase tracking-[0.35em]">Facebook</span>
+                            <span class="text-[9px] font-bold uppercase tracking-[0.35em] text-[#1A2E22] transition group-hover:text-[#C5A489]">Facebook</span>
                         </a>
                     </li>
                 </ul>
                   <!-- Zamień numery i adres e-mail na swoje -->
-            <div class="mx-auto mb-16 max-w-2xl text-left mt-10">
+            <div class="mx-auto mb-16 max-w-2xl text-left mt-14 pt-10 md:mt-20 md:pt-14">
            
                 <div class="flex flex-col gap-2 border-b border-[#1A2E22]/20 py-6 md:flex-row md:items-center md:justify-between md:gap-8">
                     <span class="shrink-0 text-[10px] font-bold uppercase tracking-[0.35em] text-[#C5A489]">Telefon</span>
