@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" id="top">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,11 +13,13 @@
             --gold-sand: #C5A489;
             --off-white: #F9F7F2;
         }
+        html {
+            scroll-behavior: smooth;
+        }
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: var(--off-white); 
             color: var(--deep-green); 
-            scroll-behavior: smooth;
         }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         
@@ -40,17 +42,38 @@
             to { opacity: 1; transform: translateY(0); }
         }
         .animate-up { animation: slideUp 0.8s ease-out forwards; }
+
+        /* Offset anchor targets below fixed nav */
+        section[id] {
+            scroll-margin-top: 6rem;
+        }
+
+        /* Social icon slots: replace inner HTML with your SVG or <img> (~24–32px) */
+        .social-icon-slot {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="absolute w-full z-50 px-8 py-10 flex justify-between items-center text-white">
-        <span class="text-3xl font-black tracking-tighter italic">studio.</span>
+    <nav
+        x-data="{ atTop: true }"
+        x-init="atTop = window.scrollY < 48"
+        @scroll.window="atTop = window.scrollY < 48"
+        class="fixed top-0 left-0 right-0 z-50 flex w-full items-center justify-between px-8 text-white transition-all duration-300"
+        :class="atTop ? 'bg-transparent py-10' : 'bg-[#1A2E22]/95 py-5 shadow-lg backdrop-blur-sm md:py-6'"
+    >
+        <a href="#top" class="text-3xl font-black tracking-tighter no-underline hover:text-[#C5A489] transition">Natalia Wysocka</a>
         <div class="hidden md:flex space-x-12 text-[10px] uppercase tracking-[0.4em] font-bold">
             
             <a href="#about" class="hover:text-[#C5A489] transition">O mnie</a>
             <a href="#gallery" class="hover:text-[#C5A489] transition">Galeria</a>
-            <a href="#pricing" class="hover:text-[#C5A489] transition">Inwestycja</a>
+            <a href="#pricing" class="hover:text-[#C5A489] transition">Oferta</a>
+            <a href="#contact" class="hover:text-[#C5A489] transition">Kontakt</a>
         </div>
         <div class="md:hidden">
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M3 5h14M3 10h14M3 15h14" stroke="white" stroke-width="2"/></svg>
@@ -58,21 +81,21 @@
     </nav>
 
     <section class="relative h-screen  bg-[#1A2E22] flex items-center overflow-hidden">
-        <div class="absolute right-0 top-0 w-full md:w-full h-full opacity-40 md:opacity-70">
+        <div class="absolute right-0 top-0 w-full md:w-full h-full opacity-70">
             <video class="w-full h-full object-cover grayscale" autoplay muted loop playsinline>
                 <source src="/copy_7DD8B6F9-7251-4C8E-B4BB-7A873D298C1F.mp4" type="video/mp4">
             </video>
         </div>
-        <div class="relative z-10 max-w-7xl mx-auto px-8 w-full animate-up flex flex-col items-center text-center">
-            <h1 class="text-7xl md:text-[11rem] text-white font-black leading-none tracking-tighter">
-                FLOW<br><span class="text-[#C5A489] italic font-normal">STATE.</span>
+        <div class="relative z-10 max-w-7xl mx-auto px-8 w-full animate-up flex flex-col items-center text-center md:mb-64">
+            <h1 class="text-7xl md:text-[11rem] text-white font-black  leading-none tracking-tighter">
+                TWOJA<br><div class="text-[#1A2E22]  font-normal">JOGA.</div>
             </h1>
-            <p class="text-white/50 mt-10 max-w-sm text-lg font-light leading-relaxed border-t border-[#C5A489] pt-6">
-                Ekskluzywna praktyka jogi dla profesjonalistów szukających balansu w centrum chaosu.
+            <p class="text-white/50 mt-10 max-w-sm text-lg font-light leading-relaxed mt-40">
+                Indywidualne sesje i eventy jogowe dopasowane do Twoich potrzeb. Zajecia grupowe we wrocławiu i okolicach.Odkrywaj ruch i potencjal swojego ciala ze mna.
             </p>
             <div class="mt-14">
-                <a href="#contact" class="inline-block border border-[#C5A489] text-[#C5A489] px-12 py-5 font-bold uppercase tracking-[0.2em] hover:bg-[#C5A489] hover:text-white transition-all duration-500">
-                    Zarezerwuj sesję
+                <a href="#contact" class="inline-block border border-white text-white px-12 py-5 font-bold uppercase tracking-[0.2em] hover:bg-green-800 hover:text-white transition-all duration-500">
+                    Skontaktuj się
                 </a>
             </div>
         </div>
@@ -85,14 +108,17 @@
         <div class="max-w-6xl mx-auto grid md:grid-cols-12 gap-0 items-center">
             <div class="md:col-span-7 relative z-10 md:translate-x-[-20px]">
                 <div class="overflow-hidden h-[45vh] min-h-[320px] md:h-[650px] w-full">
-                    <img src="617342026_864080449792809_6090802381099828354_n.jpg" alt="" class="block h-full w-full object-cover" ">
+                    <img src="617342026_864080449792809_6090802381099828354_n.jpg" alt="" class="block h-full w-full object-cover">
                 </div>
             </div>
             <div class="md:col-span-5 bg-white p-8 md:p-24 self-center md:-ml-32 relative z-20 shadow-2xl">
-                <span class="text-[#C5A489] text-xs font-bold uppercase tracking-[0.3em] mb-6 block">Filozofia</span>
-                <h2 class="text-5xl md:text-6xl mb-10 leading-tight">Esencja Ruchu</h2>
+                <span class="text-[#C5A489] text-xs font-bold uppercase tracking-[0.3em] mb-6 block">O mnie</span>
+                <h2 class="text-3xl md:text-4xl mb-10 leading-tight">Certyfikowana Nauczycielka Jogi</h2>
                 <p class="text-slate-500 leading-loose text-lg">
-                    Moja metoda to fuzja klasycznej Hathy i nowoczesnej anatomii ruchu. Nie uczę tylko pozycji; uczę, jak odnaleźć ciszę między jednym a drugim oddechem, aby zregenerować Twój układ nerwowy.
+                    Odkryłam jogę jako sposób na zatrzymanie się i odzyskanie równowagi.
+                    To ona zmieniła moje podejście do ciała i codzienności.
+                    
+                    Dziś uczę tego samego – jak poprzez ruch i oddech odnaleźć balans i poczuć się lepiej w swoim ciele.
                 </p>
             </div>
         </div>
@@ -100,13 +126,14 @@
 
     <section id="gallery" class="py-40 px-8 bg-white">
         <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-24 border-b border-slate-100 pb-12">
+            <div class="flex flex-col md:flex-row justify-between mb-24 border-b border-slate-100 pb-12">
                 <div>
-                    <span class="text-[#C5A489] font-bold uppercase tracking-[0.4em] text-[10px] mb-4 block">Archive</span>
-                    <h2 class="text-6xl font-normal">Moja Praktyka</h2>
+                    <span class="text-[#C5A489] font-bold uppercase tracking-[0.4em] text-[10px] mb-4 block">Galeria</span>
+                    <h2 class="text-6xl font-normal">Poznajmy się bliżej</h2>
                 </div>
                 <p class="text-slate-400 max-w-xs text-sm mt-8 md:mt-0 italic leading-relaxed">
-                    Wizualny zapis precyzji, siły i spokoju. Sesje realizowane w studio oraz przestrzeniach naturalnych.
+                    To nie są tylko zajęcia. To czas dopasowany do Ciebie i Twoich potrzeb.
+                    Poziom i tempo praktyki dostosowuję do Twoich możliwości.
                 </p>
             </div>
 
@@ -121,7 +148,7 @@
                     <img src="614247353_1363445535794148_3061338048914939097_n.jpg" class="w-full transition duration-700">
                 </div>
                 <div class="gallery-item overflow-hidden shadow-xl rounded-sm">
-                    <img src="617342026_864080449792809_6090802381099828354_n.jpg" class="w-full transition duration-700">
+                    <img src="DSC03650.jpg" class="w-full transition duration-700">
                 </div>
                 <div class="gallery-item overflow-hidden shadow-xl rounded-sm">
                     <img src="616547076_2256314254852880_1228399724851494341_n.jpg" class="w-full transition duration-700">
@@ -133,30 +160,53 @@
                     <img src="616134480_1420560796366575_5108939830918804903_n.jpg" class="w-full transition duration-700">
                 </div>
                 <div class="gallery-item overflow-hidden shadow-xl rounded-sm">
-                    <img src="614676775_3128012357382930_3698500492567957453_n.jpg" class="w-full transition duration-700">
+                    <img src="617282326_2443400849410786_5969143369786600150_n.jpg" class="w-full transition duration-700">
                 </div>
                 <div class="gallery-item overflow-hidden shadow-xl rounded-sm">
-                    <img src="613566824_734872403011104_7553094548256116541_n.jpg" class="w-full transition duration-700">
+                    <img src="FB5B9BB9-24A4-4188-AAEB-7FBD83EFF3B4.JPG" class="w-full transition duration-700">
                 </div>
             </div>
         </div>
     </section>
 
     <section id="pricing" class="py-40 px-8 bg-[#1A2E22] text-white">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-5xl text-center mb-28 font-light tracking-tight italic">Inwestycja w dobrostan</h2>
-            <div class="grid md:grid-cols-2 gap-20">
-                <div class="border-l border-[#C5A489]/30 pl-12 py-6">
+        <div class="max-w-screen-2xl mx-auto">
+            <h2 class="text-6xl text-center mb-28 font-light tracking-tight ">OFERTA</h2>
+            
+            <div class="grid md:grid-cols-5 gap-8 lg:gap-5 md:items-stretch">
+                <div class="flex h-full flex-col border-l border-[#C5A489]/30 py-6 pl-12">
                     <span class="text-[#C5A489] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">Individual</span>
                     <h3 class="text-3xl mb-4 font-normal">Prywatna Sesja 1:1</h3>
-                    <p class="text-white/40 text-sm mb-10 leading-relaxed max-w-xs">Pełna personalizacja programu pod Twoje cele i ewentualne ograniczenia fizyczne.</p>
-                    <div class="text-6xl font-light tracking-tighter">180 zł</div>
+                    <p class="max-w-xs text-sm leading-relaxed text-white/40">Indywidualna praktyka dopasowana do Twojego ciała, potrzeb i stylu życia – z dojazdem do Twojej przestrzeni. </p>
+                    <p class="mt-auto shrink-0 pt-10 text-lg">250 zł  /  sesja</p>
                 </div>
-                <div class="border-l border-[#C5A489]/30 pl-12 py-6">
-                    <span class="text-[#C5A489] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">Group</span>
-                    <h3 class="text-3xl mb-4 font-normal">Karnet 10 Wejść</h3>
-                    <p class="text-white/40 text-sm mb-10 leading-relaxed max-w-xs">Zajęcia w kameralnych grupach, skupione na budowaniu wspólnej energii i flow.</p>
-                    <div class="text-6xl font-light tracking-tighter">450 zł</div>
+           
+                <div class="flex h-full flex-col border-l border-[#C5A489]/30 py-6 pl-12">
+                    <span class="text-[#C5A489] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">Grupowe</span>
+                    <h3 class="text-3xl mb-4 font-normal">Zajecia w studio</h3>
+                    <p class="max-w-xs text-sm leading-relaxed text-white/40">Joga w małej grupie – spokojne tempo, indywidualna uwaga i bezpieczna przestrzeń do wspólnej praktyki. Praktyka bazująca na Ashtandze.</p>
+                    <p class="mt-auto shrink-0 pt-10 text-lg">Zapraszam do kontaktu</p>
+                </div>
+
+                <div class="flex h-full flex-col border-l border-[#C5A489]/30 py-6 pl-12">
+                    <span class="text-[#C5A489] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">Eventy</span>
+                    <h3 class="text-3xl mb-4 font-normal">Eventy jogowe</h3>
+                    <p class="max-w-xs text-sm leading-relaxed text-white/40">Tworzę wyjątkowe doświadczenia jogowe we Wrocławiu i okolicach – od kameralnych spotkań po większe wydarzenia.</p>
+                    <p class="mt-auto shrink-0 pt-10 text-lg">Zapraszam do kontaktu</p>
+                </div>
+
+                <div class="flex h-full flex-col border-l border-[#C5A489]/30 py-6 pl-12">
+                    <span class="text-[#C5A489] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">Online</span>
+                    <h3 class="text-3xl mb-4 font-normal">Praktyka zdalna</h3>
+                    <p class="max-w-xs text-sm leading-relaxed text-white/40">Sesje na żywo z Twojego domu – elastyczny termin i pełna uwaga, jak przy spotkaniu stacjonarnym.</p>
+                    <p class="mt-auto shrink-0 pt-10 text-lg">50 zł / sesja</p>
+                </div>
+
+                <div class="flex h-full flex-col border-l border-[#C5A489]/30 py-6 pl-12">
+                    <span class="text-[#C5A489] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">Silowe</span>
+                    <h3 class="text-3xl mb-4 font-normal">Trening silowy medyczny</h3>
+                    <p class="max-w-xs text-sm leading-relaxed text-white/40">Praca w podstawowych schematach ruchowych. Trening funkcjonalny i medyczny.</p>
+                    <p class="mt-auto shrink-0 pt-10 text-lg c">180-220 zł / sesja</p>
                 </div>
             </div>
         </div>
@@ -164,13 +214,80 @@
 
     <section id="contact" class="py-40 bg-white px-8">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-7xl md:text-9xl font-black leading-none tracking-tighter mb-16 uppercase">Gotowa na<br><span class="text-[#C5A489] italic font-normal lowercase">zmianę?</span></h2>
+            <h2 class="text-7xl md:text-9xl font-black leading-none tracking-tighter mb-16 uppercase">Dowiedz się <br><div class="text-[#C5A489] italic font-normal lowercase md:text-left md:pl-12">więcej !</div></h2>
+
+          
+
             <form class="space-y-12 max-w-2xl mx-auto">
-                <input type="email" placeholder="TWÓJ ADRES EMAIL" class="w-full border-b border-[#1A2E22]/20 py-6 text-xl focus:outline-none focus:border-[#C5A489] transition-colors placeholder:text-slate-300 tracking-widest font-light">
+                
+                <input type="name" placeholder="TWOJE IMIĘ" class="w-full border-b border-[#1A2E22]/20 py-6 md:text-xl focus:outline-none focus:border-[#C5A489] transition-colors placeholder:text-slate-300 tracking-widest font-light">
+                <input type="email" placeholder="TWÓJ ADRES EMAIL / TELEFON" class="w-full border-b border-[#1A2E22]/20 py-6 md:text-xl focus:outline-none focus:border-[#C5A489] transition-colors placeholder:text-slate-300 tracking-widest font-light">
+                <textarea name="message" rows="4" placeholder="JAK MOGĘ CI POMÓC ?" class="w-full min-h-[10rem] resize-y border-b border-[#1A2E22]/20 py-6 md:text-xl focus:outline-none focus:border-[#C5A489] transition-colors placeholder:text-slate-300 tracking-widest font-light leading-relaxed"></textarea>
                 <button class="w-full bg-[#1A2E22] text-white py-8 text-sm font-bold uppercase tracking-[0.5em] hover:bg-[#C5A489] transition-all duration-700 shadow-2xl">
-                    Wyślij zgłoszenie
+                    Wyślij wiadomość
                 </button>
             </form>
+
+            <!-- Social: zamień href na swoje profile; w .social-icon-slot wklej SVG albo <img src="..." alt=""> -->
+            <nav class="mt-20 border-t border-[#1A2E22]/10 pt-14" aria-label="Media społecznościowe">
+                <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-[#C5A489] mb-8">Znajdziesz mnie</p>
+                <ul class="flex flex-wrap items-center justify-center gap-10 md:gap-14">
+                    <li>
+                        <a
+                            href="https://www.tiktok.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="group inline-flex flex-col items-center gap-3 text-[#1A2E22] transition hover:text-[#C5A489] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A489] focus-visible:ring-offset-2"
+                            aria-label="TikTok (otwiera się w nowej karcie)"
+                        >
+                            <span class="social-icon-slot rounded-full border border-[#1A2E22]/15 bg-[#1A2E22]/5 transition group-hover:border-[#C5A489]/40" aria-hidden="true">
+                                <!-- ikona TikTok -->
+                            </span>
+                            <span class="text-[9px] font-bold uppercase tracking-[0.35em]">TikTok</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://www.instagram.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="group inline-flex flex-col items-center gap-3 text-[#1A2E22] transition hover:text-[#C5A489] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A489] focus-visible:ring-offset-2"
+                            aria-label="Instagram (otwiera się w nowej karcie)"
+                        >
+                            <span class="social-icon-slot rounded-full border border-[#1A2E22]/15 bg-[#1A2E22]/5 transition group-hover:border-[#C5A489]/40" aria-hidden="true">
+                                <!-- ikona Instagram -->
+                            </span>
+                            <span class="text-[9px] font-bold uppercase tracking-[0.35em]">Instagram</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://www.facebook.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="group inline-flex flex-col items-center gap-3 text-[#1A2E22] transition hover:text-[#C5A489] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A489] focus-visible:ring-offset-2"
+                            aria-label="Facebook (otwiera się w nowej karcie)"
+                        >
+                            <span class="social-icon-slot rounded-full border border-[#1A2E22]/15 bg-[#1A2E22]/5 transition group-hover:border-[#C5A489]/40" aria-hidden="true">
+                                <!-- ikona Facebook -->
+                            </span>
+                            <span class="text-[9px] font-bold uppercase tracking-[0.35em]">Facebook</span>
+                        </a>
+                    </li>
+                </ul>
+                  <!-- Zamień numery i adres e-mail na swoje -->
+            <div class="mx-auto mb-16 max-w-2xl text-left mt-10">
+           
+                <div class="flex flex-col gap-2 border-b border-[#1A2E22]/20 py-6 md:flex-row md:items-center md:justify-between md:gap-8">
+                    <span class="shrink-0 text-[10px] font-bold uppercase tracking-[0.35em] text-[#C5A489]">Telefon</span>
+                    <a href="tel:+48663383340" class="text-lg font-light tracking-wide text-[#1A2E22] transition hover:text-[#C5A489] md:text-right md:text-xl">+48 663 383 340</a>
+                </div>
+                <div class="flex flex-col gap-2 border-b border-[#1A2E22]/20 py-6 md:flex-row md:items-center md:justify-between md:gap-8">
+                    <span class="shrink-0 text-[10px] font-bold uppercase tracking-[0.35em] text-[#C5A489]">E-mail</span>
+                    <a href="mailto:kontakt@example.com" class="break-all text-lg font-light tracking-wide text-[#1A2E22] transition hover:text-[#C5A489] md:text-right md:text-xl">wysocka.yoga@gmail.com</a>
+                </div>
+            </div>
+            </nav>
         </div>
     </section>
 

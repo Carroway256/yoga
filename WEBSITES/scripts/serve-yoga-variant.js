@@ -6,15 +6,25 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const url = require("url");
+const chokidar = require("chokidar");
+const { WebSocketServer } = require("ws");
+
+const LIVE_RELOAD_PATH = "/__livereload";
 
 function parseArgs(argv) {
-  const args = { variant: null, port: 3000, host: "127.0.0.1" };
+  const args = {
+    variant: null,
+    port: 3000,
+    host: "127.0.0.1",
+    liveReload: true,
+  };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     const next = argv[i + 1];
     if (a === "--variant") args.variant = next;
     if (a === "--port") args.port = Number(next);
     if (a === "--host") args.host = next;
+    if (a === "--no-livereload") args.liveReload = false;
   }
   return args;
 }
@@ -67,10 +77,21 @@ function readFile(filePath) {
   return fs.readFileSync(filePath);
 }
 
+/** @param {Buffer} data @param {boolean} inject */
+function maybeInjectLiveReload(data, inject) {
+  if (!inject) return data;
+  const snippet = `<script>(function(){var p=location.protocol==="https:"?"wss":"ws";var s=new WebSocket(p+"://"+location.host+"${LIVE_RELOAD_PATH}");s.onmessage=function(){location.reload()};})();</script>`;
+  const html = data.toString("utf8");
+  if (html.includes("</body>")) {
+    return Buffer.from(html.replace("</body>", `${snippet}</body>`), "utf8");
+  }
+  return Buffer.concat([data, Buffer.from(snippet, "utf8")]);
+}
+
 const args = parseArgs(process.argv.slice(2));
 if (!args.variant) {
   console.log(
-    "Usage: node scripts/serve-yoga-variant.js --variant <variantName> --port <port> [--host <host>]",
+    "Usage: node scripts/serve-yoga-variant.js --variant <variantName> --port <port> [--host <host>] [--no-livereload]",
   );
   process.exit(1);
 }
@@ -159,7 +180,12 @@ const server = http.createServer((req, res) => {
   res.setHeader("Cache-Control", "no-cache");
 
   try {
-    const data = readFile(resolvedPath);
+    let data = readFile(resolvedPath);
+    const inject =
+      args.liveReload &&
+      method === "GET" &&
+      contentType.startsWith("text/html");
+    if (inject) data = maybeInjectLiveReload(data, true);
     res.statusCode = 200;
     if (method === "HEAD") {
       res.end();
@@ -179,8 +205,45 @@ const server = http.createServer((req, res) => {
   );
 });
 
+let reloadTimer = null;
+function broadcastReload(wss) {
+  if (!wss) return;
+  if (reloadTimer) clearTimeout(reloadTimer);
+  reloadTimer = setTimeout(() => {
+    reloadTimer = null;
+    for (const client of wss.clients) {
+      if (client.readyState === 1) client.send("reload");
+    }
+  }, 80);
+}
+
+/** @type {import("ws").WebSocketServer | null} */
+let wss = null;
+if (args.liveReload) {
+  wss = new WebSocketServer({ noServer: true });
+  server.on("upgrade", (request, socket, head) => {
+    const pathname = url.parse(request.url || "").pathname || "";
+    if (pathname !== LIVE_RELOAD_PATH) {
+      socket.destroy();
+      return;
+    }
+    wss.handleUpgrade(request, socket, head, (ws) => {
+      wss.emit("connection", ws, request);
+    });
+  });
+  chokidar
+    .watch([variantDir, assetsDir], {
+      ignoreInitial: true,
+      awaitWriteFinish: { stabilityThreshold: 100, pollInterval: 50 },
+    })
+    .on("all", () => broadcastReload(wss));
+}
+
 server.listen(args.port, args.host, () => {
   console.log(`Yoga server running: http://${args.host}:${args.port}/`);
   console.log(`Variant: ${args.variant}`);
   console.log(`Assets: ${path.relative(rootDir, assetsDir)}`);
+  if (args.liveReload) {
+    console.log("Live reload: on (use --no-livereload to disable)");
+  }
 });
