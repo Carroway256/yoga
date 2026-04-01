@@ -1,0 +1,48 @@
+:root {
+    --deep-green: #1A2E22;
+    --gold-sand: #C5A489;
+    --off-white: #F9F7F2;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--off-white);
+    color: var(--deep-green);
+}
+h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+/* Editorial Typography Effects */
+.text-vertical { writing-mode: vertical-rl; text-orientation: mixed; }
+.tracking-ultra { letter-spacing: 0.15em; }
+
+/* Custom Hover Effects */
+.gallery-item {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.gallery-item:hover {
+    transform: scale(1.02);
+    z-index: 10;
+}
+
+/* Animation */
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-up { animation: slideUp 0.8s ease-out forwards; }
+
+/* Offset anchor targets below fixed nav */
+section[id] {
+    scroll-margin-top: 6rem;
+}
+
+/* Social icon slots: replace inner HTML with your SVG or <img> (~24–32px) */
+.social-icon-slot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+}
