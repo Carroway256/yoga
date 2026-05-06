@@ -1,133 +1,257 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl" id="top">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Yoga Natalia Wysocka</title>
-    <meta name="description" content="Indywidualne sesje i eventy jogowe dopasowane do Twoich potrzeb. Zajęcia grupowe we Wrocławiu i okolicach. Odkrywaj ruch i potencjał swojego ciała ze mną.">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Yoga Natalia Wysocka">
-    <meta property="og:description" content="Indywidualne sesje i eventy jogowe dopasowane do Twoich potrzeb. Zajęcia grupowe we Wrocławiu i okolicach. Odkrywaj ruch i potencjał swojego ciała ze mną.">
-    <meta property="og:image" content="assets/jog.png">
-    <meta property="og:locale" content="pl_PL">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Yoga Natalia Wysocka">
-    <meta name="twitter:description" content="Indywidualne sesje i eventy jogowe dopasowane do Twoich potrzeb. Zajęcia grupowe we Wrocławiu i okolicach. Odkrywaj ruch i potencjał swojego ciała ze mną.">
-    <meta name="twitter:image" content="assets/jog.png">
+    <meta
+      name="description"
+      content="Indywidualne sesje i eventy jogowe dopasowane do Twoich potrzeb. Zajęcia grupowe we Wrocławiu i okolicach. Odkrywaj ruch i potencjał swojego ciała ze mną."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Yoga Natalia Wysocka" />
+    <meta
+      property="og:description"
+      content="Indywidualne sesje i eventy jogowe dopasowane do Twoich potrzeb. Zajęcia grupowe we Wrocławiu i okolicach. Odkrywaj ruch i potencjał swojego ciała ze mną."
+    />
+    <meta property="og:image" content="assets/jog.png" />
+    <meta property="og:locale" content="pl_PL" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Yoga Natalia Wysocka" />
+    <meta
+      name="twitter:description"
+      content="Indywidualne sesje i eventy jogowe dopasowane do Twoich potrzeb. Zajęcia grupowe we Wrocławiu i okolicach. Odkrywaj ruch i potencjał swojego ciała ze mną."
+    />
+    <meta name="twitter:image" content="assets/jog.png" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-</head>
-<body class="antialiased">
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,900&family=Inter:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="antialiased">
     <nav
-        x-data="{ atTop: true, mobileMenuOpen: false }"
-        x-init="atTop = window.scrollY < 48"
-        @scroll.window="atTop = window.scrollY < 48"
-        @keydown.escape.window="mobileMenuOpen = false"
-        class="fixed top-0 left-0 right-0 z-50 flex w-full items-center justify-between px-8 text-white transition-all duration-300"
-        :class="atTop ? 'bg-transparent py-10' : 'bg-[#1A2E22]/95 py-5 shadow-lg backdrop-blur-sm md:py-6'"
+      x-data="{ atTop: true, mobileMenuOpen: false }"
+      x-init="atTop = window.scrollY < 48"
+      @scroll.window="atTop = window.scrollY < 48"
+      @keydown.escape.window="mobileMenuOpen = false"
+      class="fixed top-0 left-0 right-0 z-50 flex w-full items-center justify-between px-8 text-white transition-all duration-300"
+      :class="atTop ? 'bg-transparent py-10' : 'bg-[#1A2E22]/95 py-5 shadow-lg backdrop-blur-sm md:py-6'"
     >
-        <a href="#top" class="text-3xl font-black tracking-tighter no-underline md:hover:text-[#C5A489] transition">Natalia Wysocka</a>
-        <div class="hidden md:flex space-x-12 text-[10px] uppercase tracking-[0.4em] font-bold">
-            
-            <a href="#about" class="md:hover:text-[#C5A489] transition">O mnie</a>
-            <a href="#gallery" class="md:hover:text-[#C5A489] transition">Galeria</a>
-            <a href="#pricing" class="md:hover:text-[#C5A489] transition">Oferta</a>
-            <a href="#contact" class="md:hover:text-[#C5A489] transition">Kontakt</a>
-        </div>
-        <div class="md:hidden">
-            <button
-                type="button"
-                class="inline-flex min-h-12 min-w-12 items-center justify-center p-3"
-                @click="mobileMenuOpen = !mobileMenuOpen"
-                :aria-expanded="mobileMenuOpen.toString()"
-                aria-controls="mobile-menu"
-                aria-label="Otwórz menu"
-            >
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M3 5h14M3 10h14M3 15h14" stroke="white" stroke-width="2"/></svg>
-            </button>
-        </div>
-        <div
-            id="mobile-menu"
-            class="absolute left-0 right-0 top-full border-t border-white/10 bg-[#1A2E22]/95 px-8 py-6 backdrop-blur-sm md:hidden"
-            x-show="mobileMenuOpen"
-            x-transition.opacity.duration.200ms
-            @click.outside="mobileMenuOpen = false"
-            style="display: none;"
+      <a
+        href="#top"
+        class="text-3xl font-black tracking-tighter no-underline md:hover:text-[#C5A489] transition"
+        >Natalia Wysocka</a
+      >
+      <div
+        class="hidden md:flex space-x-12 text-[10px] uppercase tracking-[0.4em] font-bold"
+      >
+        <a href="#about" class="md:hover:text-[#C5A489] transition">O mnie</a>
+        <a href="#gallery" class="md:hover:text-[#C5A489] transition"
+          >Galeria</a
         >
-            <div class="flex flex-col gap-3 text-sm uppercase tracking-[0.3em] font-bold">
-                <a href="#about" class="block w-full rounded-md px-2 py-3 md:hover:text-[#C5A489] md:hover:bg-white/5 transition" @click="mobileMenuOpen = false">O mnie</a>
-                <a href="#gallery" class="block w-full rounded-md px-2 py-3 md:hover:text-[#C5A489] md:hover:bg-white/5 transition" @click="mobileMenuOpen = false">Galeria</a>
-                <a href="#pricing" class="block w-full rounded-md px-2 py-3 md:hover:text-[#C5A489] md:hover:bg-white/5 transition" @click="mobileMenuOpen = false">Oferta</a>
-                <a href="#contact" class="block w-full rounded-md px-2 py-3 md:hover:text-[#C5A489] md:hover:bg-white/5 transition" @click="mobileMenuOpen = false">Kontakt</a>
-            </div>
+        <a href="#pricing" class="md:hover:text-[#C5A489] transition">Oferta</a>
+        <a href="#contact" class="md:hover:text-[#C5A489] transition"
+          >Kontakt</a
+        >
+      </div>
+      <div class="md:hidden">
+        <button
+          type="button"
+          class="inline-flex min-h-12 min-w-12 items-center justify-center p-3"
+          @click="mobileMenuOpen = !mobileMenuOpen"
+          :aria-expanded="mobileMenuOpen.toString()"
+          aria-controls="mobile-menu"
+          aria-label="Otwórz menu"
+        >
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M3 5h14M3 10h14M3 15h14" stroke="white" stroke-width="2" />
+          </svg>
+        </button>
+      </div>
+      <div
+        id="mobile-menu"
+        class="absolute left-0 right-0 top-full border-t border-white/10 bg-[#1A2E22]/95 px-8 py-6 backdrop-blur-sm md:hidden"
+        x-show="mobileMenuOpen"
+        x-transition.opacity.duration.200ms
+        @click.outside="mobileMenuOpen = false"
+        style="display: none"
+      >
+        <div
+          class="flex flex-col gap-3 text-sm uppercase tracking-[0.3em] font-bold"
+        >
+          <a
+            href="#about"
+            class="block w-full rounded-md px-2 py-3 md:hover:text-[#C5A489] md:hover:bg-white/5 transition"
+            @click="mobileMenuOpen = false"
+            >O mnie</a
+          >
+          <a
+            href="#gallery"
+            class="block w-full rounded-md px-2 py-3 md:hover:text-[#C5A489] md:hover:bg-white/5 transition"
+            @click="mobileMenuOpen = false"
+            >Galeria</a
+          >
+          <a
+            href="#pricing"
+            class="block w-full rounded-md px-2 py-3 md:hover:text-[#C5A489] md:hover:bg-white/5 transition"
+            @click="mobileMenuOpen = false"
+            >Oferta</a
+          >
+          <a
+            href="#contact"
+            class="block w-full rounded-md px-2 py-3 md:hover:text-[#C5A489] md:hover:bg-white/5 transition"
+            @click="mobileMenuOpen = false"
+            >Kontakt</a
+          >
         </div>
+      </div>
     </nav>
 
-    <section class="relative h-screen  bg-[#1A2E22] flex items-center overflow-hidden">
-        <div class="absolute right-0 top-0 w-full md:w-full h-full opacity-70">
-            <video class="w-full h-full object-cover grayscale" autoplay muted loop playsinline>
-                <source src="assets/copy_7DD8B6F9-7251-4C8E-B4BB-7A873D298C1F.mp4" type="video/mp4">
-            </video>
+    <section
+      class="relative h-screen bg-[#1A2E22] flex items-center overflow-hidden"
+    >
+      <div class="absolute right-0 top-0 w-full md:w-full h-full opacity-70">
+        <video
+          class="w-full h-full object-cover grayscale"
+          autoplay
+          muted
+          loop
+          playsinline
+        >
+          <source
+            src="assets/copy_7DD8B6F9-7251-4C8E-B4BB-7A873D298C1F.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+      <div
+        class="relative z-10 max-w-7xl mx-auto px-8 w-full animate-up flex flex-col items-center text-center md:mb-64"
+      >
+        <h1
+          class="text-7xl md:text-[11rem] text-white font-black leading-none tracking-tighter"
+        >
+          TWOJA<br />
+          <div class="text-[#1A2E22] font-normal">JOGA.</div>
+        </h1>
+        <p
+          class="text-white/50 mt-10 max-w-sm text-lg font-light leading-relaxed md:mt-40"
+        >
+          Indywidualne sesje i eventy jogowe dopasowane do Twoich potrzeb.
+          Zajęcia grupowe we Wrocławiu i okolicach. Odkrywaj ruch i potencjał
+          swojego ciała ze mną. Co da Ci trening ze mną?
+          <ul class="list-disc ml-8 text-left mt-4 text-white/50">
+            <li>Poprawę postawy</li>
+            <li>Zwiększenie świadomości ciała</li>
+            <li>Ukształtowanie sylwetki</li>
+            <li>Wzmocnienie ciała i zrelaksowanie umysłu</li>
+            <li>Polepszenie sprawności</li>
+          </ul>
+        </p>
+        <div class="mt-14">
+          <a
+            href="#contact"
+            class="inline-block border border-white text-white px-12 py-5 font-bold uppercase tracking-[0.2em] hover:bg-green-800 hover:text-white transition-all duration-500"
+          >
+            Skontaktuj się
+          </a>
         </div>
-        <div class="relative z-10 max-w-7xl mx-auto px-8 w-full animate-up flex flex-col items-center text-center md:mb-64">
-            <h1 class="text-7xl md:text-[11rem] text-white font-black  leading-none tracking-tighter">
-                TWOJA<br><div class="text-[#1A2E22]  font-normal">JOGA.</div>
-            </h1>
-            <p class="text-white/50 mt-10 max-w-sm text-lg font-light leading-relaxed md:mt-40">
-                Indywidualne sesje i eventy jogowe dopasowane do Twoich potrzeb. Zajęcia grupowe we Wrocławiu i okolicach. Odkrywaj ruch i potencjał swojego ciała ze mną.
-            </p>
-            <div class="mt-14">
-                <a href="#contact" class="inline-block border border-white text-white px-12 py-5 font-bold uppercase tracking-[0.2em] hover:bg-green-800 hover:text-white transition-all duration-500">
-                    Skontaktuj się
-                </a>
-            </div>
-        </div>
-        <div class="absolute left-10 bottom-10 hidden md:block">
-            <span class="text-vertical text-white/10 uppercase tracking-[1em] text-[10px] font-bold">ESTABLISHED 2026 — YOGA ARCHITECTURE</span>
-        </div>
+      </div>
+      <div class="absolute left-10 bottom-10 hidden md:block">
+        <span
+          class="text-vertical text-white/10 uppercase tracking-[1em] text-[10px] font-bold"
+          >ESTABLISHED 2026 — YOGA ARCHITECTURE</span
+        >
+      </div>
     </section>
 
     <section id="about" class="py-52 px-8 bg-[#F9F7F2] overflow-hidden">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-12 gap-0 items-center">
-            <div class="md:col-span-7 relative z-10 md:translate-x-[-20px]">
-                <div class="overflow-hidden h-[45vh] min-h-[320px] md:h-[650px] w-full">
-                    <img src="assets/614203473_1218218953844718_829325212283755468_n.jpg" alt="" class="block h-full w-full object-cover md:-translate-x-[35px] ">
-                </div>
-            </div>
-            <div class="md:col-span-5 bg-white p-10 md:p-28 self-center md:-ml-32 relative z-20 shadow-2xl">
-                <span class="text-[#C5A489] text-xs font-bold uppercase tracking-[0.3em] mb-6 block">O mnie</span>
-                <h2 class="text-3xl md:text-4xl mb-10 leading-tight">Certyfikowana Nauczycielka Jogi</h2>
-                <p class="text-slate-500 leading-loose text-lg">
-                    Swoją ścieżkę jogową rozpoczęłam w Tajlandii. Następnie skończyłam
-                    kurs RYT-200 akredytowany przez stowarzyszenie Yoga Alliance. Za mną wieloletnia praktyka własna, wiele warsztatów pod okiem nauczycieli z różnych zakątków świata. Chętnie podzielę się z Tobą swoją wiedzą i doświadczeniem.
-                    Zajęcia ze mną to holistyczna podróż do równowagi. Wzmocnienie i uelastycznienie ciała, praca z oddechem i układem nerwowym. To moment, w którym możesz się zatrzymać i naprawdę poczuć swoje ciało - spokojne, silne i świadome.
-               </p>
-            </div>
+      <div class="max-w-6xl mx-auto grid md:grid-cols-12 gap-0 items-center">
+        <div class="md:col-span-7 relative z-10 md:translate-x-[-20px]">
+          <div
+            class="overflow-hidden h-[45vh] min-h-[320px] md:h-[650px] w-full"
+          >
+            <img
+              src="assets/614203473_1218218953844718_829325212283755468_n.jpg"
+              alt=""
+              class="block h-full w-full object-cover md:-translate-x-[35px]"
+            />
+          </div>
         </div>
-        <div class="max-w-6xl mx-auto mt-52 md:mt-40 grid md:grid-cols-12 gap-0 items-center">
-            <div class="md:col-span-5 bg-white p-10 md:p-28 self-center md:-mr-32 relative z-20 shadow-2xl md:order-1">
-                <span class="text-[#C5A489] text-xs font-bold uppercase tracking-[0.3em] mb-6 block">O mnie</span>
-                <h2 class="text-3xl md:text-4xl mb-10 leading-tight">Trener medyczny</h2>
-                <p class="text-slate-500 leading-loose text-lg">
-                    Jestem w trakcie kursu trenera medycznego.
-                    Programuję skuteczne i przede wszystkim bezpieczne treningi medyczne i funkcjonalne. Bazuję na holistycznym podejściu do aparatu ruchu. Wspólnie pracujemy nad Twoją sprawnością lub powrotem do niej po kontuzjach. Łączę trening siłowy z uważnością i reedukacją ruchową.</p>
-            </div>
-            <div class="md:col-span-7 relative z-10 md:translate-x-[20px] md:order-2">
-                <div class="overflow-hidden h-[45vh] min-h-[320px] md:h-[650px] w-full">
-                    <img src="assets/678378751_1502304494804432_3323572802094354981_n.jpg" alt="" class="block h-full w-full object-cover">
-                </div>
-            </div>
+        <div
+          class="md:col-span-5 bg-white p-10 md:p-28 self-center md:-ml-32 relative z-20 shadow-2xl"
+        >
+          <span
+            class="text-[#C5A489] text-xs font-bold uppercase tracking-[0.3em] mb-6 block"
+            >O mnie</span
+          >
+          <h2 class="text-3xl md:text-4xl mb-10 leading-tight">
+            Certyfikowana Nauczycielka Jogi
+          </h2>
+          <p class="text-slate-500 leading-loose text-lg">
+            Swoją ścieżkę jogową rozpoczęłam w Tajlandii. Następnie skończyłam
+            kurs RYT-200 akredytowany przez stowarzyszenie Yoga Alliance. Za mną
+            wieloletnia praktyka własna, wiele warsztatów pod okiem nauczycieli
+            z różnych zakątków świata. Chętnie podzielę się z Tobą swoją wiedzą
+            i doświadczeniem. Zajęcia ze mną to holistyczna podróż do równowagi.
+            Wzmocnienie i uelastycznienie ciała, praca z oddechem i układem
+            nerwowym. To moment, w którym możesz się zatrzymać i naprawdę poczuć
+            swoje ciało - spokojne, silne i świadome.
+          </p>
         </div>
+      </div>
+      <div
+        class="max-w-6xl mx-auto mt-52 md:mt-40 grid md:grid-cols-12 gap-0 items-center"
+      >
+        <div
+          class="md:col-span-5 bg-white p-10 md:p-28 self-center md:-mr-32 relative z-20 shadow-2xl md:order-1"
+        >
+          <span
+            class="text-[#C5A489] text-xs font-bold uppercase tracking-[0.3em] mb-6 block"
+            >O mnie</span
+          >
+          <h2 class="text-3xl md:text-4xl mb-10 leading-tight">
+            Trener medyczny
+          </h2>
+          <p class="text-slate-500 leading-loose text-lg">
+            Jestem w trakcie kursu trenera medycznego. Programuję skuteczne i
+            przede wszystkim bezpieczne treningi medyczne i funkcjonalne. Bazuję
+            na holistycznym podejściu do aparatu ruchu. Wspólnie pracujemy nad
+            Twoją sprawnością lub powrotem do niej po kontuzjach. Łączę trening
+            siłowy z uważnością i reedukacją ruchową.
+          </p>
+        </div>
+        <div
+          class="md:col-span-7 relative z-10 md:translate-x-[20px] md:order-2"
+        >
+          <div
+            class="overflow-hidden h-[45vh] min-h-[320px] md:h-[650px] w-full"
+          >
+            <img
+              src="assets/678378751_1502304494804432_3323572802094354981_n.jpg"
+              alt=""
+              class="block h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
     </section>
 
     <section
-        id="gallery"
-        class="py-40 px-8 bg-white"
-        x-data="{
+      id="gallery"
+      class="py-40 px-8 bg-white"
+      x-data="{
             expanded: false,
             mobileLimit: 3,
             desktopLimit: 6,
@@ -160,7 +284,7 @@
                 return this.isMobile ? this.mobileLimit : this.desktopLimit;
             }
         }"
-        x-init="
+      x-init="
             checkGalleryInView();
             window.addEventListener('resize', () => {
                 isMobile = window.innerWidth < 768;
@@ -169,209 +293,561 @@
             window.addEventListener('scroll', () => { checkGalleryInView() }, { passive: true });
         "
     >
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between mb-24 border-b border-slate-100 pb-12">
-                <div>
-                    <span class="text-[#C5A489] font-bold uppercase tracking-[0.4em] text-[10px] mb-4 block">Galeria</span>
-                    <h2 class="text-6xl font-normal">Poznajmy się bliżej</h2>
-                </div>
-                <p class="text-slate-400 max-w-xs text-sm mt-8 md:mt-0 italic leading-relaxed">
-                    To nie są tylko zajęcia. To czas dopasowany do Ciebie i Twoich potrzeb.
-                    Poziom i tempo praktyki dostosowuję do Twoich możliwości.
-                </p>
-            </div>
-
-            <div id="gallery-list" class="grid grid-cols-1 md:grid-cols-3 gap-8" x-ref="galleryList">
-                <div class="gallery-item overflow-hidden shadow-xl rounded-sm transform-gpu" x-show="expanded || 0 < currentLimit" x-transition:enter.opacity.scale.origin.top.duration.500ms x-transition:leave.duration.0ms>
-                    <img src="assets/618640629_1442724833904555_3826791502309384574_n.jpg" alt="" loading="eager" decoding="async" fetchpriority="high" class="block h-full w-full object-cover transition duration-700">
-                </div>
-                <div class="gallery-item overflow-hidden shadow-xl rounded-sm transform-gpu" x-show="expanded || 1 < currentLimit" x-transition:enter.opacity.scale.origin.top.duration.500ms x-transition:leave.duration.0ms>
-                    <img src="assets/image00026.jpeg" alt="" loading="lazy" decoding="async" class="w-full transition duration-700">
-                </div>
-                <div class="gallery-item overflow-hidden shadow-xl rounded-sm transform-gpu" x-show="expanded || 2 < currentLimit" x-transition:enter.opacity.scale.origin.top.duration.500ms x-transition:leave.duration.0ms>
-                    <img src="assets/614247353_1363445535794148_3061338048914939097_n.jpg" alt="" loading="lazy" decoding="async" class="block h-full w-full object-cover transition duration-700">
-                </div>
-                <div class="gallery-item overflow-hidden shadow-xl rounded-sm transform-gpu" x-show="expanded || 3 < currentLimit" x-transition:enter.opacity.scale.origin.top.duration.500ms x-transition:leave.duration.0ms>
-                    <img src="assets/DSC03650.jpg" alt="" loading="lazy" decoding="async" class="w-full transition duration-700">
-                </div>
-                <div class="gallery-item overflow-hidden shadow-xl rounded-sm transform-gpu" x-show="expanded || 4 < currentLimit" x-transition:enter.opacity.scale.origin.top.duration.500ms x-transition:leave.duration.0ms>
-                    <img src="assets/616547076_2256314254852880_1228399724851494341_n.jpg" alt="" loading="lazy" decoding="async" class="w-full transition duration-700">
-                </div>
-                <div class="gallery-item overflow-hidden shadow-xl rounded-sm transform-gpu" x-show="expanded || 5 < currentLimit" x-transition:enter.opacity.scale.origin.top.duration.500ms x-transition:leave.duration.0ms>
-                    <img src="assets/598713731_1343900104177564_4820631278037007928_n.jpg" alt="" loading="lazy" decoding="async" class="w-full transition duration-700">
-                </div>
-                <div class="gallery-item overflow-hidden shadow-xl rounded-sm transform-gpu" x-show="expanded || 6 < currentLimit" x-transition:enter.opacity.scale.origin.top.duration.500ms x-transition:leave.duration.0ms>
-                    <img src="assets/616134480_1420560796366575_5108939830918804903_n.jpg" alt="" loading="lazy" decoding="async" class="w-full transition duration-700">
-                </div>
-                <div class="gallery-item overflow-hidden shadow-xl rounded-sm transform-gpu" x-show="expanded || 7 < currentLimit" x-transition:enter.opacity.scale.origin.top.duration.500ms x-transition:leave.duration.0ms>
-                    <img src="assets/617282326_2443400849410786_5969143369786600150_n.jpg" alt="" loading="lazy" decoding="async" class="w-full transition duration-700">
-                </div>
-                <div class="gallery-item overflow-hidden shadow-xl rounded-sm transform-gpu" x-show="expanded || 9 < currentLimit" x-transition:enter.opacity.scale.origin.top.duration.500ms x-transition:leave.duration.0ms>
-                    <img src="assets/image00008.jpeg" alt="" loading="lazy" decoding="async" class="w-full transition duration-700">
-                </div>
-                <div class="gallery-item overflow-hidden shadow-xl rounded-sm transform-gpu" x-show="expanded || 10 < currentLimit" x-transition:enter.opacity.scale.origin.top.duration.500ms x-transition:leave.duration.0ms>
-                    <img src="assets/image00021.jpeg" alt="" loading="lazy" decoding="async" class="w-full transition duration-700">
-                </div>
-                <div class="gallery-item overflow-hidden shadow-xl rounded-sm transform-gpu" x-show="expanded || 12 < currentLimit" x-transition:enter.opacity.scale.origin.top.duration.500ms x-transition:leave.duration.0ms>
-                    <img src="assets/image00004.jpeg" alt="" loading="lazy" decoding="async" class="w-full transition duration-700">
-                </div>
-                <div class="gallery-item overflow-hidden shadow-xl rounded-sm transform-gpu" x-show="expanded || 13 < currentLimit" x-transition:enter.opacity.scale.origin.top.duration.500ms x-transition:leave.duration.0ms>
-                    <img src="assets/image00006.jpeg" alt="" loading="lazy" decoding="async" class="w-full transition duration-700">
-                </div>
-                <div class="gallery-item overflow-hidden shadow-xl rounded-sm transform-gpu" x-show="expanded || 14 < currentLimit" x-transition:enter.opacity.scale.origin.top.duration.500ms x-transition:leave.duration.0ms>
-                    <img src="assets/image00016.jpeg" alt="" loading="lazy" decoding="async" class="w-full transition duration-700">
-                </div>
-                <div class="gallery-item overflow-hidden shadow-xl rounded-sm transform-gpu" x-show="expanded || 15 < currentLimit" x-transition:enter.opacity.scale.origin.top.duration.500ms x-transition:leave.duration.0ms>
-                    <img src="assets/image00019.jpeg" alt="" loading="lazy" decoding="async" class="w-full transition duration-700">
-                </div>
-            </div>
-            <div class="mt-14 flex justify-center" x-show="galleryCount > currentLimit">
-                <button
-                    type="button"
-                    class="inline-flex items-center gap-3 border border-[#1A2E22] px-8 py-4 text-[11px] font-bold uppercase tracking-[0.35em] text-[#1A2E22] transition hover:bg-[#1A2E22] hover:text-white"
-                    @click="if (expanded) { collapseGallery(); } else { expanded = true; }"
-                    :aria-expanded="expanded.toString()"
-                    aria-controls="gallery-list"
-                >
-                    <span x-show="!expanded">zobacz więcej</span>
-                    <span x-show="expanded">zwiń</span>
-                    <i class="fa-solid transition-all duration-300" :class="expanded ? 'fa-chevron-up -translate-y-0.5' : 'fa-chevron-down translate-y-0.5'" aria-hidden="true"></i>
-                </button>
-            </div>
-            <button
-                type="button"
-                class="fixed bottom-6 right-4 z-40 inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#1A2E22]/20 bg-white/95 text-[#1A2E22] shadow-xl backdrop-blur-sm transition hover:bg-[#1A2E22] hover:text-white md:hidden"
-                x-show="expanded && isMobile && isInGalleryView"
-                x-transition.opacity.scale.duration.300ms
-                @click="collapseGallery()"
-                aria-label="Zwiń galerię"
+      <div class="max-w-7xl mx-auto">
+        <div
+          class="flex flex-col md:flex-row justify-between mb-24 border-b border-slate-100 pb-12"
+        >
+          <div>
+            <span
+              class="text-[#C5A489] font-bold uppercase tracking-[0.4em] text-[10px] mb-4 block"
+              >Galeria</span
             >
-                <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
-            </button>
+            <h2 class="text-6xl font-normal">Poznajmy się bliżej</h2>
+          </div>
+          <p
+            class="text-slate-400 max-w-md text-sm mt-8 md:mt-0 italic leading-relaxed"
+          >
+          Od najmłodszych lat towarzyszy mi aktywność fizyczna. Przez akrobatykę, lekkoatletykę, fitness, trening siłowy, siatkówkę, taniec, squash, bieganie ,aż po jogę, która okazała się być najbardziej przełomowa. Zrozumiałam dzięki niej, że ruch to narzędzie do regulacji układu nerwowego. Zrozumiałam dzięki niej moje emocje, nauczyłam się nad nimi panować i pozwoliłam je sobie przeżywać. Joga pozwoliła mi zagłębić się w swoje ciało, umysł i bardziej wszystko zrozumieć. Od lat praktyka jogi jest moją kotwicą, jest kompletnym systemem filozoficznym, który przynosi mi spokój, pewność i wdzięczność. Joga nie jest jednak kompletnym systemem ruchowym. Nie zapewni pełni sprawności. 
+          Moje zaplecze jogowe w połączeniu z kompetencjami trenera medycznego i doświadczeniem sportowym pozwalają mi z powodzeniem prowadzić podopiecznych przez świat ruchu, aktywności fizycznej i pracy z umysłem za pośrednictwem ciała. 
+          Jeśli czujesz, że to holistyczne podejście z Tobą rezonuje - zapraszam Cię do współpracy.
+          </p>
         </div>
+
+        <div
+          id="gallery-list"
+          class="grid grid-cols-1 md:grid-cols-3 gap-8"
+          x-ref="galleryList"
+        >
+          <div
+            class="gallery-item overflow-hidden rounded-sm border border-slate-200 bg-white shadow-xl transform-gpu"
+            x-show="expanded || 0 < currentLimit"
+            x-transition:enter.opacity.scale.origin.top.duration.500ms
+            x-transition:leave.duration.0ms
+          >
+            <img
+              src="assets/618640629_1442724833904555_3826791502309384574_n.jpg"
+              alt=""
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+              class="block h-80 w-full object-cover transition duration-700"
+            />
+            <p class="px-5 py-4 text-sm leading-relaxed text-slate-600">
+              Bezprecedensowa Underwater Yoga z TheRecipe, gdzie poprowadziłam
+              sesję jogi w kanale Mozambickim w zoo Wrocław.
+            </p>
+          </div>
+          <div
+            class="gallery-item overflow-hidden rounded-sm border border-slate-200 bg-white shadow-xl transform-gpu"
+            x-show="expanded || 1 < currentLimit"
+            x-transition:enter.opacity.scale.origin.top.duration.500ms
+            x-transition:leave.duration.0ms
+          >
+            <img
+              src="assets/image00026.jpeg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              class="h-80 w-full object-cover transition duration-700"
+            />
+            <p class="px-5 py-4 text-sm leading-relaxed text-slate-600">
+              Bezprecedensowa Underwater Yoga z TheRecipe, gdzie poprowadziłam
+              sesję jogi w kanale Mozambickim w zoo Wrocław.
+            </p>
+          </div>
+          <div
+            class="gallery-item overflow-hidden rounded-sm border border-slate-200 bg-white shadow-xl transform-gpu"
+            x-show="expanded || 2 < currentLimit"
+            x-transition:enter.opacity.scale.origin.top.duration.500ms
+            x-transition:leave.duration.0ms
+          >
+            <img
+              src="assets/614247353_1363445535794148_3061338048914939097_n.jpg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              class="block h-80 w-full object-cover transition duration-700"
+            />
+            <p class="px-5 py-4 text-sm leading-relaxed text-slate-600">
+              Bezprecedensowa Underwater Yoga z TheRecipe, gdzie poprowadziłam
+              sesję jogi w kanale Mozambickim w zoo Wrocław.
+            </p>
+          </div>
+          <div
+            class="gallery-item overflow-hidden rounded-sm border border-slate-200 bg-white shadow-xl transform-gpu"
+            x-show="expanded || 3 < currentLimit"
+            x-transition:enter.opacity.scale.origin.top.duration.500ms
+            x-transition:leave.duration.0ms
+          >
+            <img
+              src="assets/DSC03650.jpg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              class="h-80 w-full object-cover transition duration-700"
+            />
+            <p class="px-5 py-4 text-sm leading-relaxed text-slate-600">
+              Bezprecedensowa Underwater Yoga z TheRecipe, gdzie poprowadziłam
+              sesję jogi w kanale Mozambickim w zoo Wrocław.
+            </p>
+          </div>
+          <div
+            class="gallery-item overflow-hidden rounded-sm border border-slate-200 bg-white shadow-xl transform-gpu"
+            x-show="expanded || 4 < currentLimit"
+            x-transition:enter.opacity.scale.origin.top.duration.500ms
+            x-transition:leave.duration.0ms
+          >
+            <img
+              src="assets/616547076_2256314254852880_1228399724851494341_n.jpg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              class="h-80 w-full object-cover transition duration-700"
+            />
+            <p class="px-5 py-4 text-sm leading-relaxed text-slate-600">
+              Bezprecedensowa Underwater Yoga z TheRecipe, gdzie poprowadziłam
+              sesję jogi w kanale Mozambickim w zoo Wrocław.
+            </p>
+          </div>
+          <div
+            class="gallery-item overflow-hidden rounded-sm border border-slate-200 bg-white shadow-xl transform-gpu"
+            x-show="expanded || 5 < currentLimit"
+            x-transition:enter.opacity.scale.origin.top.duration.500ms
+            x-transition:leave.duration.0ms
+          >
+            <img
+              src="assets/598713731_1343900104177564_4820631278037007928_n.jpg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              class="h-80 w-full object-cover transition duration-700"
+            />
+            <p class="px-5 py-4 text-sm leading-relaxed text-slate-600">
+              Bezprecedensowa Underwater Yoga z TheRecipe, gdzie poprowadziłam
+              sesję jogi w kanale Mozambickim w zoo Wrocław.
+            </p>
+          </div>
+          <div
+            class="gallery-item overflow-hidden rounded-sm border border-slate-200 bg-white shadow-xl transform-gpu"
+            x-show="expanded || 6 < currentLimit"
+            x-transition:enter.opacity.scale.origin.top.duration.500ms
+            x-transition:leave.duration.0ms
+          >
+            <img
+              src="assets/616134480_1420560796366575_5108939830918804903_n.jpg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              class="h-80 w-full object-cover transition duration-700"
+            />
+            <p class="px-5 py-4 text-sm leading-relaxed text-slate-600">
+              Bezprecedensowa Underwater Yoga z TheRecipe, gdzie poprowadziłam
+              sesję jogi w kanale Mozambickim w zoo Wrocław.
+            </p>
+          </div>
+          <div
+            class="gallery-item overflow-hidden rounded-sm border border-slate-200 bg-white shadow-xl transform-gpu"
+            x-show="expanded || 7 < currentLimit"
+            x-transition:enter.opacity.scale.origin.top.duration.500ms
+            x-transition:leave.duration.0ms
+          >
+            <img
+              src="assets/617282326_2443400849410786_5969143369786600150_n.jpg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              class="h-80 w-full object-cover transition duration-700"
+            />
+            <p class="px-5 py-4 text-sm leading-relaxed text-slate-600">
+              Bezprecedensowa Underwater Yoga z TheRecipe, gdzie poprowadziłam
+              sesję jogi w kanale Mozambickim w zoo Wrocław.
+            </p>
+          </div>
+          <div
+            class="gallery-item overflow-hidden rounded-sm border border-slate-200 bg-white shadow-xl transform-gpu"
+            x-show="expanded || 9 < currentLimit"
+            x-transition:enter.opacity.scale.origin.top.duration.500ms
+            x-transition:leave.duration.0ms
+          >
+            <img
+              src="assets/image00008.jpeg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              class="h-80 w-full object-cover transition duration-700"
+            />
+            <p class="px-5 py-4 text-sm leading-relaxed text-slate-600">
+              Bezprecedensowa Underwater Yoga z TheRecipe, gdzie poprowadziłam
+              sesję jogi w kanale Mozambickim w zoo Wrocław.
+            </p>
+          </div>
+          <div
+            class="gallery-item overflow-hidden rounded-sm border border-slate-200 bg-white shadow-xl transform-gpu"
+            x-show="expanded || 10 < currentLimit"
+            x-transition:enter.opacity.scale.origin.top.duration.500ms
+            x-transition:leave.duration.0ms
+          >
+            <img
+              src="assets/image00021.jpeg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              class="h-80 w-full object-cover transition duration-700"
+            />
+            <p class="px-5 py-4 text-sm leading-relaxed text-slate-600">
+              Bezprecedensowa Underwater Yoga z TheRecipe, gdzie poprowadziłam
+              sesję jogi w kanale Mozambickim w zoo Wrocław.
+            </p>
+          </div>
+          <div
+            class="gallery-item overflow-hidden rounded-sm border border-slate-200 bg-white shadow-xl transform-gpu"
+            x-show="expanded || 12 < currentLimit"
+            x-transition:enter.opacity.scale.origin.top.duration.500ms
+            x-transition:leave.duration.0ms
+          >
+            <img
+              src="assets/image00004.jpeg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              class="h-80 w-full object-cover transition duration-700"
+            />
+            <p class="px-5 py-4 text-sm leading-relaxed text-slate-600">
+              Bezprecedensowa Underwater Yoga z TheRecipe, gdzie poprowadziłam
+              sesję jogi w kanale Mozambickim w zoo Wrocław.
+            </p>
+          </div>
+          <div
+            class="gallery-item overflow-hidden rounded-sm border border-slate-200 bg-white shadow-xl transform-gpu"
+            x-show="expanded || 13 < currentLimit"
+            x-transition:enter.opacity.scale.origin.top.duration.500ms
+            x-transition:leave.duration.0ms
+          >
+            <img
+              src="assets/image00006.jpeg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              class="h-80 w-full object-cover transition duration-700"
+            />
+            <p class="px-5 py-4 text-sm leading-relaxed text-slate-600">
+              Bezprecedensowa Underwater Yoga z TheRecipe, gdzie poprowadziłam
+              sesję jogi w kanale Mozambickim w zoo Wrocław.
+            </p>
+          </div>
+          <div
+            class="gallery-item overflow-hidden rounded-sm border border-slate-200 bg-white shadow-xl transform-gpu"
+            x-show="expanded || 14 < currentLimit"
+            x-transition:enter.opacity.scale.origin.top.duration.500ms
+            x-transition:leave.duration.0ms
+          >
+            <img
+              src="assets/image00016.jpeg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              class="h-80 w-full object-cover transition duration-700"
+            />
+            <p class="px-5 py-4 text-sm leading-relaxed text-slate-600">
+              Bezprecedensowa Underwater Yoga z TheRecipe, gdzie poprowadziłam
+              sesję jogi w kanale Mozambickim w zoo Wrocław.
+            </p>
+          </div>
+          <div
+            class="gallery-item overflow-hidden rounded-sm border border-slate-200 bg-white shadow-xl transform-gpu"
+            x-show="expanded || 15 < currentLimit"
+            x-transition:enter.opacity.scale.origin.top.duration.500ms
+            x-transition:leave.duration.0ms
+          >
+            <img
+              src="assets/image00019.jpeg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              class="h-80 w-full object-cover transition duration-700"
+            />
+            <p class="px-5 py-4 text-sm leading-relaxed text-slate-600">
+              Bezprecedensowa Underwater Yoga z TheRecipe, gdzie poprowadziłam
+              sesję jogi w kanale Mozambickim w zoo Wrocław.
+            </p>
+          </div>
+        </div>
+        <div
+          class="mt-14 flex justify-center"
+          x-show="galleryCount > currentLimit"
+        >
+          <button
+            type="button"
+            class="inline-flex items-center gap-3 border border-[#1A2E22] px-8 py-4 text-[11px] font-bold uppercase tracking-[0.35em] text-[#1A2E22] transition hover:bg-[#1A2E22] hover:text-white"
+            @click="if (expanded) { collapseGallery(); } else { expanded = true; }"
+            :aria-expanded="expanded.toString()"
+            aria-controls="gallery-list"
+          >
+            <span x-show="!expanded">zobacz więcej</span>
+            <span x-show="expanded">zwiń</span>
+            <i
+              class="fa-solid transition-all duration-300"
+              :class="expanded ? 'fa-chevron-up -translate-y-0.5' : 'fa-chevron-down translate-y-0.5'"
+              aria-hidden="true"
+            ></i>
+          </button>
+        </div>
+        <button
+          type="button"
+          class="fixed bottom-6 right-4 z-40 inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#1A2E22]/20 bg-white/95 text-[#1A2E22] shadow-xl backdrop-blur-sm transition hover:bg-[#1A2E22] hover:text-white md:hidden"
+          x-show="expanded && isMobile && isInGalleryView"
+          x-transition.opacity.scale.duration.300ms
+          @click="collapseGallery()"
+          aria-label="Zwiń galerię"
+        >
+          <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+        </button>
+      </div>
     </section>
 
     <section id="pricing" class="py-40 px-8 bg-[#1A2E22] text-white">
-        <div class="max-w-screen-2xl mx-auto">
-            <h2 class="text-6xl text-center mb-28 font-light tracking-tight ">OFERTA</h2>
-            
-            <div class="grid md:grid-cols-3 xl:grid-cols-5 gap-8 lg:gap-5 md:items-stretch">
-                <div class="flex h-full flex-col border-l border-[#C5A489]/30 py-6 pl-12">
-                    <span class="text-[#C5A489] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">Individual</span>
-                    <h3 class="text-3xl mb-4 font-normal">Prywatna Sesja 1:1</h3>
-                    <p class="max-w-xs text-sm leading-relaxed text-white/40">Indywidualna praktyka dopasowana do Twojego ciała, potrzeb i stylu życia – z dojazdem do Twojej przestrzeni. </p>
-                    <p class="mt-auto shrink-0 pt-10 text-lg">250 zł  /  sesja</p>
-                </div>
-           
-                <div class="flex h-full flex-col border-l border-[#C5A489]/30 py-6 pl-12">
-                    <span class="text-[#C5A489] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">Grupowe</span>
-                    <h3 class="text-3xl mb-4 font-normal">Zajęcia w studio</h3>
-                    <p class="max-w-xs text-sm leading-relaxed text-white/40">Joga w małej grupie - spokojne tempo, indywidualna uwaga i bezpieczna przestrzeń do wspólnej praktyki. Praktyka bazująca na Ashtandze.</p>
-                    <p class="mt-auto shrink-0 pt-10 text-lg">Zapraszam do kontaktu</p>
-                </div>
+      <div class="max-w-screen-2xl mx-auto">
+        <h2 class="text-6xl text-center mb-28 font-light tracking-tight">
+          OFERTA
+        </h2>
 
-                <div class="flex h-full flex-col border-l border-[#C5A489]/30 py-6 pl-12">
-                    <span class="text-[#C5A489] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">Eventy</span>
-                    <h3 class="text-3xl mb-4 font-normal">Eventy jogowe</h3>
-                    <p class="max-w-xs text-sm leading-relaxed text-white/40">Tworzę wyjątkowe doświadczenia jogowe we Wrocławiu i okolicach - od kameralnych spotkań po większe wydarzenia.</p>
-                    <p class="mt-auto shrink-0 pt-10 text-lg">Zapraszam do kontaktu</p>
-                </div>
+        <div
+          class="grid md:grid-cols-3 xl:grid-cols-5 gap-8 lg:gap-5 md:items-stretch"
+        >
+          <div
+            class="flex h-full flex-col border-l border-[#C5A489]/30 py-6 pl-12"
+          >
+            <span
+              class="text-[#C5A489] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block"
+              >Individual</span
+            >
+            <h3 class="text-3xl mb-4 font-normal">Prywatna Sesja 1:1</h3>
+            <p class="max-w-xs text-sm leading-relaxed text-white/40">
+              Indywidualna praktyka dopasowana do Twojego ciała, potrzeb i stylu
+              życia – z dojazdem do Twojej przestrzeni.
+            </p>
+            <p class="mt-auto shrink-0 pt-10 text-lg">250 zł / sesja</p>
+          </div>
 
-                <div class="flex h-full flex-col border-l border-[#C5A489]/30 py-6 pl-12">
-                    <span class="text-[#C5A489] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">Online</span>
-                    <h3 class="text-3xl mb-4 font-normal">Praktyka zdalna</h3>
-                    <p class="max-w-xs text-sm leading-relaxed text-white/40">Sesje na żywo z Twojego domu - elastyczny termin i pełna uwaga, jak przy spotkaniu stacjonarnym.</p>
-                    <p class="mt-auto shrink-0 pt-10 text-lg">50 zł / sesja</p>
-                </div>
+          <div
+            class="flex h-full flex-col border-l border-[#C5A489]/30 py-6 pl-12"
+          >
+            <span
+              class="text-[#C5A489] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block"
+              >Grupowe</span
+            >
+            <h3 class="text-3xl mb-4 font-normal">Zajęcia w studio</h3>
+            <p class="max-w-xs text-sm leading-relaxed text-white/40">
+              Joga w małej grupie - spokojne tempo, indywidualna uwaga i
+              bezpieczna przestrzeń do wspólnej praktyki. Praktyka bazująca na
+              Ashtandze.
+            </p>
+            <p class="mt-auto shrink-0 pt-10 text-lg">Zapraszam do kontaktu</p>
+          </div>
 
-                <div class="flex h-full flex-col border-l border-[#C5A489]/30 py-6 pl-12">
-                    <span class="text-[#C5A489] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">Siłowe</span>
-                    <h3 class="text-3xl mb-4 font-normal">Trening siłowy medyczny</h3>
-                    <p class="max-w-xs text-sm leading-relaxed text-white/40">Praca w podstawowych schematach ruchowych. Trening funkcjonalny i medyczny.</p>
-                    <p class="mt-auto shrink-0 pt-10 text-lg">180-220 zł / sesja</p>
-                </div>
-            </div>
+          <div
+            class="flex h-full flex-col border-l border-[#C5A489]/30 py-6 pl-12"
+          >
+            <span
+              class="text-[#C5A489] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block"
+              >Eventy</span
+            >
+            <h3 class="text-3xl mb-4 font-normal">Eventy jogowe</h3>
+            <p class="max-w-xs text-sm leading-relaxed text-white/40">
+              Tworzę wyjątkowe doświadczenia jogowe we Wrocławiu i okolicach -
+              od kameralnych spotkań po większe wydarzenia.
+            </p>
+            <p class="mt-auto shrink-0 pt-10 text-lg">Zapraszam do kontaktu</p>
+          </div>
+
+          <div
+            class="flex h-full flex-col border-l border-[#C5A489]/30 py-6 pl-12"
+          >
+            <span
+              class="text-[#C5A489] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block"
+              >Online</span
+            >
+            <h3 class="text-3xl mb-4 font-normal">Praktyka zdalna</h3>
+            <p class="max-w-xs text-sm leading-relaxed text-white/40">
+              Sesje na żywo z Twojego domu - elastyczny termin i pełna uwaga,
+              jak przy spotkaniu stacjonarnym.
+            </p>
+            <p class="mt-auto shrink-0 pt-10 text-lg">50 zł / sesja</p>
+          </div>
+
+          <div
+            class="flex h-full flex-col border-l border-[#C5A489]/30 py-6 pl-12"
+          >
+            <span
+              class="text-[#C5A489] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block"
+              >Siłowe</span
+            >
+            <h3 class="text-3xl mb-4 font-normal">Trening siłowy medyczny</h3>
+            <p class="max-w-xs text-sm leading-relaxed text-white/40">
+              Praca w podstawowych wzorcach ruchowych. Trening funkcjonalny i
+              medyczny.
+            </p>
+            <p class="mt-auto shrink-0 pt-10 text-lg">180-220 zł / sesja</p>
+          </div>
         </div>
+      </div>
     </section>
 
     <section id="contact" class="pt-40 pb-10 md:pb-20 bg-white px-8">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-7xl md:text-9xl font-black leading-none tracking-tighter mb-16 uppercase">Dowiedz się <br><div class="text-[#C5A489] italic font-normal lowercase md:text-left md:pl-12">więcej !</div></h2>
+      <div class="max-w-4xl mx-auto text-center">
+        <h2
+          class="text-7xl md:text-9xl font-black leading-none tracking-tighter mb-16 uppercase"
+        >
+          Dowiedz się <br />
+          <div
+            class="text-[#C5A489] italic font-normal lowercase md:text-left md:pl-12"
+          >
+            więcej !
+          </div>
+        </h2>
 
-          
+        <form class="space-y-12 max-w-2xl mx-auto">
+          <input
+            type="text"
+            name="name"
+            placeholder="TWOJE IMIĘ"
+            class="w-full border-b border-[#1A2E22]/20 py-6 md:text-xl focus:outline-none focus:border-[#C5A489] transition-colors placeholder:text-slate-300 tracking-widest font-light"
+          />
+          <input
+            type="email"
+            placeholder="TWÓJ ADRES EMAIL / TELEFON"
+            class="w-full border-b border-[#1A2E22]/20 py-6 md:text-xl focus:outline-none focus:border-[#C5A489] transition-colors placeholder:text-slate-300 tracking-widest font-light"
+          />
+          <textarea
+            name="message"
+            rows="4"
+            placeholder="JAK MOGĘ CI POMÓC ?"
+            class="w-full min-h-[10rem] resize-y border-b border-[#1A2E22]/20 py-6 md:text-xl focus:outline-none focus:border-[#C5A489] transition-colors placeholder:text-slate-300 tracking-widest font-light leading-relaxed"
+          ></textarea>
+          <button
+            type="button"
+            class="w-full bg-[#1A2E22] text-white py-8 text-sm font-bold uppercase tracking-[0.5em] hover:bg-[#C5A489] transition-all duration-700 shadow-2xl"
+          >
+            Wyślij wiadomość
+          </button>
+        </form>
 
-            <form class="space-y-12 max-w-2xl mx-auto">
-                
-                <input type="text" name="name" placeholder="TWOJE IMIĘ" class="w-full border-b border-[#1A2E22]/20 py-6 md:text-xl focus:outline-none focus:border-[#C5A489] transition-colors placeholder:text-slate-300 tracking-widest font-light">
-                <input type="email" placeholder="TWÓJ ADRES EMAIL / TELEFON" class="w-full border-b border-[#1A2E22]/20 py-6 md:text-xl focus:outline-none focus:border-[#C5A489] transition-colors placeholder:text-slate-300 tracking-widest font-light">
-                <textarea name="message" rows="4" placeholder="JAK MOGĘ CI POMÓC ?" class="w-full min-h-[10rem] resize-y border-b border-[#1A2E22]/20 py-6 md:text-xl focus:outline-none focus:border-[#C5A489] transition-colors placeholder:text-slate-300 tracking-widest font-light leading-relaxed"></textarea>
-                <button type="button" class="w-full bg-[#1A2E22] text-white py-8 text-sm font-bold uppercase tracking-[0.5em] hover:bg-[#C5A489] transition-all duration-700 shadow-2xl">
-                    Wyślij wiadomość
-                </button>
-            </form>
-
-            <!-- Social: zamień href na swoje profile -->
-            <nav class="mt-20 border-t border-[#1A2E22]/10 px-4 py-12 pt-16 sm:px-6 md:mt-24 md:px-8 md:py-16 md:pt-20" aria-label="Media społecznościowe">
-                <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-[#C5A489] mb-10 md:mb-12">Znajdziesz mnie</p>
-                <ul class="flex flex-wrap items-center justify-center gap-x-12 gap-y-12 md:gap-x-16 md:gap-y-14 lg:gap-x-20">
-                    <li>
-                        <a
-                            href="https://www.tiktok.com/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="group inline-flex flex-col items-center gap-4 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A489] focus-visible:ring-offset-2"
-                            aria-label="TikTok (otwiera się w nowej karcie)"
-                        >
-                            <span class="social-icon-slot rounded-full border border-[#1A2E22]/15 bg-white transition group-hover:border-[#C5A489]/40" aria-hidden="true">
-                                <i class="fa-brands fa-tiktok text-xl text-black group-hover:opacity-90" aria-hidden="true"></i>
-                            </span>
-                            <span class="text-[9px] font-bold uppercase tracking-[0.35em] text-[#1A2E22] transition group-hover:text-[#C5A489]">TikTok</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="https://www.instagram.com/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="group inline-flex flex-col items-center gap-4 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A489] focus-visible:ring-offset-2"
-                            aria-label="Instagram (otwiera się w nowej karcie)"
-                        >
-                            <span class="social-icon-slot rounded-full border border-[#1A2E22]/15 bg-white transition group-hover:border-[#C5A489]/40" aria-hidden="true">
-                                <i class="fa-brands fa-instagram text-xl text-[#E4405F] group-hover:opacity-90" aria-hidden="true"></i>
-                            </span>
-                            <span class="text-[9px] font-bold uppercase tracking-[0.35em] text-[#1A2E22] transition group-hover:text-[#C5A489]">Instagram</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="https://www.facebook.com/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="group inline-flex flex-col items-center gap-4 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A489] focus-visible:ring-offset-2"
-                            aria-label="Facebook (otwiera się w nowej karcie)"
-                        >
-                            <span class="social-icon-slot rounded-full border border-[#1A2E22]/15 bg-white transition group-hover:border-[#C5A489]/40" aria-hidden="true">
-                                <i class="fa-brands fa-facebook text-xl text-[#1877F2] group-hover:opacity-90" aria-hidden="true"></i>
-                            </span>
-                            <span class="text-[9px] font-bold uppercase tracking-[0.35em] text-[#1A2E22] transition group-hover:text-[#C5A489]">Facebook</span>
-                        </a>
-                    </li>
-                </ul>
-                  <!-- Zamień numery i adres e-mail na swoje -->
-            <div class="mx-auto mb-16 max-w-2xl text-left mt-14 pt-10 md:mt-20 md:pt-14">
-           
-                <div class="flex flex-col gap-2 border-b border-[#1A2E22]/20 py-6 md:flex-row md:items-center md:justify-between md:gap-8">
-                    <span class="shrink-0 text-[10px] font-bold uppercase tracking-[0.35em] text-[#C5A489]">Telefon</span>
-                    <a href="tel:+48663383340" class="text-lg font-light tracking-wide text-[#1A2E22] transition hover:text-[#C5A489] md:text-right md:text-xl">+48 663 383 340</a>
-                </div>
-                <div class="flex flex-col gap-2 border-b border-[#1A2E22]/20 py-6 md:flex-row md:items-center md:justify-between md:gap-8">
-                    <span class="shrink-0 text-[10px] font-bold uppercase tracking-[0.35em] text-[#C5A489]">E-mail</span>
-                    <a href="mailto:kontakt@example.com" class="break-all text-lg font-light tracking-wide text-[#1A2E22] transition hover:text-[#C5A489] md:text-right md:text-xl">wysocka.yoga@gmail.com</a>
-                </div>
+        <!-- Social: zamień href na swoje profile -->
+        <nav
+          class="mt-20 border-t border-[#1A2E22]/10 px-4 py-12 pt-16 sm:px-6 md:mt-24 md:px-8 md:py-16 md:pt-20"
+          aria-label="Media społecznościowe"
+        >
+          <p
+            class="text-[10px] font-bold uppercase tracking-[0.4em] text-[#C5A489] mb-10 md:mb-12"
+          >
+            Znajdziesz mnie
+          </p>
+          <ul
+            class="flex flex-wrap items-center justify-center gap-x-12 gap-y-12 md:gap-x-16 md:gap-y-14 lg:gap-x-20"
+          >
+            <li>
+              <a
+                href="https://www.tiktok.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group inline-flex flex-col items-center gap-4 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A489] focus-visible:ring-offset-2"
+                aria-label="TikTok (otwiera się w nowej karcie)"
+              >
+                <span
+                  class="social-icon-slot rounded-full border border-[#1A2E22]/15 bg-white transition group-hover:border-[#C5A489]/40"
+                  aria-hidden="true"
+                >
+                  <i
+                    class="fa-brands fa-tiktok text-xl text-black group-hover:opacity-90"
+                    aria-hidden="true"
+                  ></i>
+                </span>
+                <span
+                  class="text-[9px] font-bold uppercase tracking-[0.35em] text-[#1A2E22] transition group-hover:text-[#C5A489]"
+                  >TikTok</span
+                >
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group inline-flex flex-col items-center gap-4 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A489] focus-visible:ring-offset-2"
+                aria-label="Instagram (otwiera się w nowej karcie)"
+              >
+                <span
+                  class="social-icon-slot rounded-full border border-[#1A2E22]/15 bg-white transition group-hover:border-[#C5A489]/40"
+                  aria-hidden="true"
+                >
+                  <i
+                    class="fa-brands fa-instagram text-xl text-[#E4405F] group-hover:opacity-90"
+                    aria-hidden="true"
+                  ></i>
+                </span>
+                <span
+                  class="text-[9px] font-bold uppercase tracking-[0.35em] text-[#1A2E22] transition group-hover:text-[#C5A489]"
+                  >Instagram</span
+                >
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group inline-flex flex-col items-center gap-4 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A489] focus-visible:ring-offset-2"
+                aria-label="Facebook (otwiera się w nowej karcie)"
+              >
+                <span
+                  class="social-icon-slot rounded-full border border-[#1A2E22]/15 bg-white transition group-hover:border-[#C5A489]/40"
+                  aria-hidden="true"
+                >
+                  <i
+                    class="fa-brands fa-facebook text-xl text-[#1877F2] group-hover:opacity-90"
+                    aria-hidden="true"
+                  ></i>
+                </span>
+                <span
+                  class="text-[9px] font-bold uppercase tracking-[0.35em] text-[#1A2E22] transition group-hover:text-[#C5A489]"
+                  >Facebook</span
+                >
+              </a>
+            </li>
+          </ul>
+          <!-- Zamień numery i adres e-mail na swoje -->
+          <div
+            class="mx-auto mb-16 max-w-2xl text-left mt-14 pt-10 md:mt-20 md:pt-14"
+          >
+            <div
+              class="flex flex-col gap-2 border-b border-[#1A2E22]/20 py-6 md:flex-row md:items-center md:justify-between md:gap-8"
+            >
+              <span
+                class="shrink-0 text-[10px] font-bold uppercase tracking-[0.35em] text-[#C5A489]"
+                >Telefon</span
+              >
+              <a
+                href="tel:+48663383340"
+                class="text-lg font-light tracking-wide text-[#1A2E22] transition hover:text-[#C5A489] md:text-right md:text-xl"
+                >+48 663 383 340</a
+              >
             </div>
-            </nav>
-        </div>
+            <div
+              class="flex flex-col gap-2 border-b border-[#1A2E22]/20 py-6 md:flex-row md:items-center md:justify-between md:gap-8"
+            >
+              <span
+                class="shrink-0 text-[10px] font-bold uppercase tracking-[0.35em] text-[#C5A489]"
+                >E-mail</span
+              >
+              <a
+                href="mailto:kontakt@example.com"
+                class="break-all text-lg font-light tracking-wide text-[#1A2E22] transition hover:text-[#C5A489] md:text-right md:text-xl"
+                >wysocka.yoga@gmail.com</a
+              >
+            </div>
+          </div>
+        </nav>
+      </div>
     </section>
-
-</body>
+  </body>
 </html>
