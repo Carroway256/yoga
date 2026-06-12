@@ -3,6 +3,7 @@
     --gold-sand: #C5A489;
     --off-white: #F9F7F2;
 }
+[x-cloak] { display: none !important; }
 html {
     scroll-behavior: smooth;
 }

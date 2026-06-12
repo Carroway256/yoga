@@ -422,8 +422,7 @@
               class="h-80 w-full object-cover transition duration-700"
             />
             <p class="px-5 py-4 text-sm leading-relaxed text-slate-600">
-              Bezprecedensowa Underwater Yoga z TheRecipe, gdzie poprowadziłam
-              sesję jogi w kanale Mozambickim w zoo Wrocław.
+         
             </p>
           </div>
           <div
@@ -835,31 +834,107 @@
           </div>
         </h2>
 
-        <form class="space-y-12 max-w-2xl mx-auto">
-          <input
-            type="text"
-            name="name"
-            placeholder="TWOJE IMIĘ"
-            class="w-full border-b border-[#1A2E22]/20 py-6 md:text-xl focus:outline-none focus:border-[#C5A489] transition-colors placeholder:text-slate-300 tracking-widest font-light"
-          />
-          <input
-            type="email"
-            placeholder="TWÓJ ADRES E-MAIL / TELEFON"
-            class="w-full border-b border-[#1A2E22]/20 py-6 md:text-xl focus:outline-none focus:border-[#C5A489] transition-colors placeholder:text-slate-300 tracking-widest font-light"
-          />
-          <textarea
-            name="message"
-            rows="4"
-            placeholder="JAK MOGĘ CI POMÓC?"
-            class="w-full min-h-[10rem] resize-y border-b border-[#1A2E22]/20 py-6 md:text-xl focus:outline-none focus:border-[#C5A489] transition-colors placeholder:text-slate-300 tracking-widest font-light leading-relaxed"
-          ></textarea>
-          <button
-            type="button"
-            class="w-full bg-[#1A2E22] text-white py-8 text-sm font-bold uppercase tracking-[0.5em] hover:bg-[#C5A489] transition-all duration-700 shadow-2xl"
+        <div
+          class="max-w-2xl mx-auto"
+          x-data="{
+            status: 'idle',
+            errorMessage: '',
+            async submitForm(event) {
+              const form = event.target;
+              this.status = 'loading';
+              this.errorMessage = '';
+              try {
+                const response = await fetch(form.action, {
+                  method: 'POST',
+                  body: new FormData(form),
+                  headers: { Accept: 'application/json' },
+                });
+                const data = await response.json();
+                const pendingActivation =
+                  data.message && data.message.includes('Activation');
+                if (
+                  response.ok &&
+                  (String(data.success) === 'true' || pendingActivation)
+                ) {
+                  form.reset();
+                  this.status = 'success';
+                  return;
+                }
+                this.status = 'error';
+                this.errorMessage = data.message || 'Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz bezpośrednio.';
+              } catch {
+                this.status = 'error';
+                this.errorMessage = 'Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz bezpośrednio.';
+              }
+            },
+          }"
+        >
+          <form
+            id="contact-form"
+            action="https://formsubmit.co/ajax/wysocka.yoga@gmail.com"
+            method="POST"
+            class="space-y-12"
+            @submit.prevent="submitForm"
           >
-            Wyślij wiadomość
-          </button>
-        </form>
+            <input
+              type="hidden"
+              name="_subject"
+              value="Nowa wiadomość ze strony Yoga Natalia Wysocka"
+            />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input
+              type="text"
+              name="_honey"
+              tabindex="-1"
+              autocomplete="off"
+              class="hidden"
+              aria-hidden="true"
+            />
+            <input
+              type="text"
+              name="name"
+              placeholder="TWOJE IMIĘ"
+              required
+              class="w-full border-b border-[#1A2E22]/20 py-6 md:text-xl focus:outline-none focus:border-[#C5A489] transition-colors placeholder:text-slate-300 tracking-widest font-light"
+            />
+            <input
+              type="text"
+              name="contact"
+              placeholder="TWÓJ ADRES E-MAIL / TELEFON"
+              required
+              class="w-full border-b border-[#1A2E22]/20 py-6 md:text-xl focus:outline-none focus:border-[#C5A489] transition-colors placeholder:text-slate-300 tracking-widest font-light"
+            />
+            <textarea
+              name="message"
+              rows="4"
+              placeholder="JAK MOGĘ CI POMÓC?"
+              required
+              class="w-full min-h-[10rem] resize-y border-b border-[#1A2E22]/20 py-6 md:text-xl focus:outline-none focus:border-[#C5A489] transition-colors placeholder:text-slate-300 tracking-widest font-light leading-relaxed"
+            ></textarea>
+            <button
+              type="submit"
+              :disabled="status === 'loading'"
+              class="w-full bg-[#1A2E22] text-white py-8 text-sm font-bold uppercase tracking-[0.5em] hover:bg-[#C5A489] transition-all duration-700 shadow-2xl disabled:opacity-60 disabled:cursor-not-allowed"
+              x-text="status === 'loading' ? 'Wysyłanie…' : 'Wyślij wiadomość'"
+            ></button>
+          </form>
+          <p
+            x-show="status === 'success'"
+            x-cloak
+            class="mt-8 text-sm font-light tracking-wide text-[#1A2E22]"
+            role="status"
+          >
+            Wiadomość wysłana! Odezwę się wkrótce.
+          </p>
+          <p
+            x-show="status === 'error'"
+            x-cloak
+            class="mt-8 text-sm font-light tracking-wide text-red-700"
+            role="alert"
+            x-text="errorMessage"
+          ></p>
+        </div>
 
         <!-- Social: zamień href na swoje profile -->
         <nav
@@ -876,7 +951,7 @@
           >
             <li>
               <a
-                href="https://www.tiktok.com/"
+                href="https://www.tiktok.com/@akcosywailatan"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="group inline-flex flex-col items-center gap-4 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A489] focus-visible:ring-offset-2"
@@ -899,7 +974,7 @@
             </li>
             <li>
               <a
-                href="https://www.instagram.com/"
+                href="https://www.instagram.com/akcosywailatan"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="group inline-flex flex-col items-center gap-4 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A489] focus-visible:ring-offset-2"
